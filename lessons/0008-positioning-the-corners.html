@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 8 — Positioning the Corners (Meet the Commutator)</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/quiz.js"></script>
+</head>
+<body>
+  <p class="eyebrow">Lesson 8 · Last Layer</p>
+  <h1>Positioning the Corners</h1>
+  <p class="subtitle">A three-piece cycle that leaves everything else alone — and it turns out to be the famous <em>commutator</em>, one lesson early.</p>
+
+  <p>Cross done, cross edges placed (<a href="0007-positioning-the-edges.html">Lesson 7</a>).
+  Only the four yellow corners remain, and — like the edges — they split into
+  <strong>position first, twist second</strong>. This lesson gets every corner into its correct
+  <em>home</em>. It may end up twisted there; that's fine and expected. Twisting is
+  <a href="0009-orienting-the-corners.html">Lesson 9</a>'s job.</p>
+
+  <h2>Step 1 — find the corner that's already home</h2>
+  <p>A corner is <strong>home</strong> when its three colors are the same three colors as the
+  faces meeting at its spot — <em>in any twist</em>. Example: the corner between the yellow,
+  red, and blue centers is home if it carries yellow-red-blue stickers, even if yellow points
+  sideways. Check all four top corners:</p>
+  <ul>
+    <li><strong>All four home</strong> — skip to Lesson 9.</li>
+    <li><strong>Exactly one home</strong> — the usual case. Hold the cube so that corner sits at
+      <strong>front-right-top</strong>.</li>
+    <li><strong>None home</strong> — apply the algorithm below once from any angle;
+      <em>exactly one</em> corner will come home, guaranteed. Then proceed as above.</li>
+  </ul>
+  <p class="sidenote">You'll never find exactly two or three home (with the edges already
+  placed) — same flavor of impossibility as Lesson 7's "never exactly three edges."</p>
+
+  <h2>Step 2 — cycle the other three</h2>
+  <p class="alg-display">U R U' &nbsp;·&nbsp; L' &nbsp;·&nbsp; U R' U' &nbsp;·&nbsp; L</p>
+  <p class="sidenote" style="text-align:center;">The dots aren't moves — they mark the four
+  chunks you're about to meet below. Read it 3 + 1 + 3 + 1.</p>
+  <p>With the home corner held at front-right-top, this <strong>cycles the other three corners</strong>
+  around while the held one stays put: front-left jumps diagonally to back-right, back-right
+  slides to back-left, and back-left comes forward to front-left. Apply it, check — if the
+  three aren't home yet, apply it once more (the second pass runs the loop the remaining step;
+  a 3-cycle always lands within two tries).</p>
+
+  <div class="figrow">
+    <figure>
+      <svg width="104" height="126" viewBox="0 0 104 126" role="img" aria-label="Top view: the front-right corner stays fixed while the other three corners cycle">
+        <defs>
+          <marker id="cyc-arrow" viewBox="0 0 8 8" refX="6.5" refY="4" markerWidth="5.5" markerHeight="5.5" orient="auto">
+            <path d="M0,0 L8,4 L0,8 z" fill="var(--accent)"/>
+          </marker>
+        </defs>
+        <rect class="facelet facelet-any" x="10" y="10" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-yellow)" x="38" y="10" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="66" y="10" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-yellow)" x="10" y="38" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-yellow)" x="38" y="38" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-yellow)" x="66" y="38" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="10" y="66" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-yellow)" x="38" y="66" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="66" y="66" width="28" height="28"/>
+        <rect x="66" y="66" width="28" height="28" fill="none" stroke="var(--cube-green)" stroke-width="4"/>
+        <path d="M 32,72 L 68,36" fill="none" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#cyc-arrow)"/>
+        <path d="M 66,20 L 40,20" fill="none" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#cyc-arrow)"/>
+        <path d="M 18,38 L 18,62" fill="none" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#cyc-arrow)"/>
+        <text class="fig-label" x="52" y="116" text-anchor="middle">front</text>
+      </svg>
+      <figcaption>Top view, front toward you. The <strong>ringed</strong> front-right corner is
+      your home corner — it never moves. The other three step along the arrows once per
+      application. Edges (yellow) stay put; beige corners may be any colors.</figcaption>
+    </figure>
+  </div>
+
+  <div class="why">
+    <span class="label">The big idea: this is a commutator</span>
+    Split the algorithm in half and look at the halves:
+    <span class="move">U R U'</span> · <span class="move">L'</span> ·
+    <span class="move">U R' U'</span> · <span class="move">L</span>.
+    Call the first chunk <strong>A</strong> and the second <strong>B</strong> — then the whole
+    thing is <strong>A B A' B'</strong>: do A, do B, <em>undo</em> A, <em>undo</em> B. That shape
+    is called a <strong>commutator</strong>, and it's the deepest trick in cubing.
+    <span class="sidenote">Notation: [A, B] = A B A⁻¹ B⁻¹. And notice A =
+    <span class="move">U R U'</span> is itself a conjugate — Lesson 6's pattern, nested inside.</span>
+  </div>
+
+  <div class="why">
+    <span class="label">Why commutators disturb so little</span>
+    Here's the intuition, and it's worth a slow read. If A and B touched completely
+    <em>separate</em> parts of the cube, A B A' B' would do <strong>nothing</strong> — each undo
+    would perfectly cancel its do, like two people tidying different rooms. The only pieces that
+    end up changed are the few living in the <strong>overlap</strong>, where B disturbs what A was
+    counting on undoing. Choose A and B with a tiny overlap — here they share little more than a
+    corner's path — and you get an algorithm that moves <em>exactly three pieces</em> and restores
+    everything else automatically. Nobody memorized "eight moves that happen to work": the
+    <em>structure</em> guarantees the cleanup.
+  </div>
+
+  <div class="try">
+    <span class="label">Do this now</span>
+    Solve to the end of Lesson 7. Find your home corner (check colors, ignore twist), grip it at
+    front-right-top, and run the cycle — slowly, watching the three corners chase each other
+    around while the fourth sits still. Repeat if needed. Verify: all four corners home (colors
+    match their three surrounding centers), twists still allowed to be wrong.
+  </div>
+
+  <h2>Check yourself</h2>
+
+  <div class="quiz" data-answer="1">
+    <div class="q">A corner counts as "home" in this step when…</div>
+    <button class="opt">Its yellow sticker is facing upward</button>
+    <button class="opt">Its colors match its three faces</button>
+    <button class="opt">It sits anywhere on the top layer</button>
+    <div class="feedback"
+         data-correct="Right — home means correct position, any twist. Yellow-up comes in Lesson 9."
+         data-wrong="Home is about position only: its three colors match the three faces meeting there, in any twist."></div>
+  </div>
+
+  <div class="quiz" data-answer="2">
+    <div class="q">In the shape A B A' B', why does almost everything end up untouched?</div>
+    <button class="opt">The moves are all quite small</button>
+    <button class="opt">A and B fully cancel out always</button>
+    <button class="opt">Undo passes fix all but the overlap</button>
+    <div class="feedback"
+         data-correct="Exactly — the undos restore everything except the few pieces where A's and B's territories overlap."
+         data-wrong="A' and B' undo their halves everywhere EXCEPT where A and B interfered — only that small overlap changes."></div>
+  </div>
+
+  <div class="quiz" data-answer="0">
+    <div class="q">The three wrong corners didn't land home after one application. What now?</div>
+    <button class="opt">Apply the same algorithm once more</button>
+    <button class="opt">Rotate and pick a new home corner</button>
+    <button class="opt">Undo everything and start it over</button>
+    <div class="feedback"
+         data-correct="Right — it's a 3-cycle: one more application walks the corners to their homes."
+         data-wrong="Keep the same grip and run it again — a 3-cycle visits the other arrangement, so the second pass lands them."></div>
+  </div>
+
+  <div class="recall">
+    <span class="label">Lock it in — from memory</span>
+    What does "home, any twist" mean? Where do you hold the already-correct corner? Write the
+    commutator shape and say in one sentence why it moves so few pieces. What's left after this
+    step?
+  </div>
+
+  <h2>Read this next</h2>
+  <p><strong>Primary source:</strong> the corner-positioning step of
+  <a href="https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/">
+  Ruwix — Beginner's Method</a>. For the commutator idea itself, the conjugation/commutator
+  sections of <a href="https://www.geometer.org/rubik/group.pdf">Tom Davis, <em>Group Theory via
+  Rubik's Cube</em></a> are the best short read anywhere — this is the moment to skim them.</p>
+
+  <div class="ask-teacher">
+    <strong>Stuck or curious?</strong> Verify the commutator idea with your own hands: pick
+    an A and B that touch <em>completely</em> separate territory — say A =
+    <span class="move">U</span>, B = <span class="move">D</span> — and do A B A' B'. Nothing
+    changes, exactly as the overlap argument predicts; the three-corner cycle above works
+    only because its A and B <em>do</em> overlap, slightly. If your three corners aren't home
+    after two applications, the held corner wasn't truly home (check its colors against all
+    three surrounding centers, ignoring twist) — re-find it and re-grip. When all four
+    corners are home, continue to <a href="0009-orienting-the-corners.html">Lesson 9:
+    orienting the corners</a> — the final step.
+  </div>
+
+  <div class="lesson-nav">
+    <span><a href="../index.html">⌂ Course home</a></span>
+    <span><a href="0007-positioning-the-edges.html">← Lesson 7</a></span>
+    <span><a href="../reference/algorithms.html">Cheat-Sheet</a> · <a href="0009-orienting-the-corners.html">Lesson 9 →</a></span>
+  </div>
+</body>
+</html>

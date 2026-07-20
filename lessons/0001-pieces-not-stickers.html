@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 1 — The Cube Is Pieces, Not Stickers</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/quiz.js"></script>
+</head>
+<body>
+  <p class="eyebrow">Lesson 1 · Foundations</p>
+  <h1>The Cube Is Pieces, Not Stickers</h1>
+  <p class="subtitle">The one reframe that turns the cube from magic into a system you can reason about.</p>
+
+  <p>You've turned a cube before and watched colors scatter. That scattering feels
+  chaotic because of an illusion: it looks like you're shuffling <em>54 colored
+  stickers</em>. You're not. You can't move a sticker on its own — ever. Stickers
+  are glued to small cubes, and <strong>those</strong> are the real things that move.</p>
+
+  <div class="why">
+    <span class="label">Why this matters</span>
+    Every solving technique you'll ever learn is about getting <em>pieces</em> to the
+    right place and turning them the right way. If you think in stickers, the cube is
+    unlearnable. If you think in pieces, it becomes a small, finite puzzle.
+  </div>
+
+  <h2>There are only three kinds of piece</h2>
+  <p>Pick up your cube and look closely. Every little cube on it falls into exactly
+  one of three groups, and you can tell which by <strong>counting its colored faces</strong>:</p>
+
+  <ul>
+    <li><strong>Centers</strong> — 1 sticker. One in the middle of each face. <strong>6 total.</strong></li>
+    <li><strong>Edges</strong> — 2 stickers. They sit between two centers. <strong>12 total.</strong></li>
+    <li><strong>Corners</strong> — 3 stickers. They sit at the corners. <strong>8 total.</strong></li>
+  </ul>
+
+  <p>That's <strong>20 movable pieces</strong> (12 + 8) — far friendlier than 54 stickers.
+  See the <a href="../reference/glossary.html">glossary</a> for these definitions any time.</p>
+
+  <div class="try">
+    <span class="label">Do this now — cube in hand</span>
+    Find one corner piece. Notice it carries three colors that are <em>stuck
+    together permanently</em> — say white-red-blue. Turn the cube any way you like:
+    that corner will <strong>always</strong> show those same three colors together. It can
+    travel to a new spot and it can twist, but white-red-blue never becomes
+    white-red-green. The colors on a piece are welded for life.
+  </div>
+
+  <h2>The centers don't move (this is the secret)</h2>
+  <p>Here's the part most people never notice. When you turn a face, the center of
+  that face spins <em>in place</em> but never travels. The six centers are fixed to a
+  central core — a six-armed spider inside the cube — and <strong>always keep the same
+  arrangement relative to each other</strong>.</p>
+
+  <div class="why">
+    <span class="label">Why this matters</span>
+    The center color <em>is</em> that face's true color. White center → that face is the
+    white face, no matter what mess surrounds it. So solving isn't "decide where
+    colors go" — the centers already decided. Your whole job is to bring every edge
+    and corner home to match the centers they belong between.
+  </div>
+
+  <div class="try">
+    <span class="label">Do this now — cube in hand</span>
+    Do four <span class="move">R</span> turns in a row (right face, clockwise, ×4).
+    The cube returns exactly to where it started — and the right-face center never
+    went anywhere. Now scramble freely and confirm: opposite centers (e.g. white and
+    yellow) are <em>always</em> on opposite sides. They can't be rearranged.
+  </div>
+
+  <h2>Two things — and only two — can be wrong with a piece</h2>
+  <p>Since pieces are the unit, ask two questions about any piece:</p>
+  <ol>
+    <li><strong>Is it in the right spot?</strong> That's its <em>permutation</em> (position).</li>
+    <li><strong>Is it turned the right way in that spot?</strong> That's its <em>orientation</em>.</li>
+  </ol>
+  <p>A piece can be in the correct position but twisted wrong — right home, facing
+  the wrong way. Solved means every piece is <strong>both</strong> correctly positioned
+  <strong>and</strong> correctly oriented. Hold onto this split: nearly every algorithm you'll
+  meet does one job — it fixes <em>position</em>, or it fixes <em>orientation</em>.
+  <span class="sidenote">This position/orientation split is the backbone of the
+  group-theory view of the cube — see the primary source below.</span></p>
+
+  <div class="try">
+    <span class="label">Do this now — cube in hand</span>
+    Scramble lightly (three or four turns), then hunt for both kinds of "wrong": find one
+    piece sitting in its correct home but facing the wrong way (right <em>position</em>,
+    wrong <em>orientation</em>), and one piece that's simply in the wrong spot. Point at
+    each and name its problem out loud. If you can tell those two apart on a real cube,
+    the whole course's backbone is yours.
+  </div>
+
+  <h2>Check yourself</h2>
+
+  <div class="quiz" data-answer="1">
+    <div class="q">A piece showing exactly two colors is which kind?</div>
+    <button class="opt">It is a corner piece</button>
+    <button class="opt">It is an edge piece</button>
+    <button class="opt">It is a center piece</button>
+    <div class="feedback"
+         data-correct="Two stickers means an edge. Corners have three, centers have one."
+         data-wrong="Count the stickers: two colors = edge. Three = corner, one = center."></div>
+  </div>
+
+  <div class="quiz" data-answer="2">
+    <div class="q">A corner is in its correct home but twisted the wrong way. What's wrong?</div>
+    <button class="opt">Its color has changed</button>
+    <button class="opt">Its position is wrong</button>
+    <button class="opt">Its orientation is wrong</button>
+    <div class="feedback"
+         data-correct="Right spot, wrong twist = an orientation problem. Position is fine."
+         data-wrong="Right home means position is correct. The thing left to fix is how it's turned — orientation."></div>
+  </div>
+
+  <div class="quiz" data-answer="0">
+    <div class="q">Why can you treat the white center as fixing the white face?</div>
+    <button class="opt">Centers keep a fixed arrangement</button>
+    <button class="opt">White is always the starting face</button>
+    <button class="opt">Centers swap when you turn faces</button>
+    <div class="feedback"
+         data-correct="Exactly — the six centers keep a fixed arrangement, so each center defines its face's true color."
+         data-wrong="Centers are locked to the core in a fixed cross — they spin but never rearrange, so each one permanently names its face."></div>
+  </div>
+
+  <div class="recall">
+    <span class="label">Lock it in — say it out loud</span>
+    Without looking: How many movable pieces are there? What are the three piece
+    types and how do you tell them apart? What are the two things that can be wrong
+    with a single piece? (Answers are above — but try from memory first.)
+  </div>
+
+  <h2>Read this next</h2>
+  <p><strong>Primary source:</strong> the opening sections of
+  <a href="https://people.math.harvard.edu/~jjchen/docs/Group%20Theory%20and%20the%20Rubik's%20Cube.pdf">
+  <em>Group Theory and the Rubik's Cube</em> by Janet Chen (Harvard)</a>. Read just
+  the introduction and the description of the cube's pieces — it says, with math
+  behind it, exactly what you just learned by hand. Don't worry about the proofs yet.</p>
+
+  <div class="ask-teacher">
+    <strong>Stuck or curious?</strong> The claim people doubt most is that centers never
+    rearrange — if that's you, turn one face slowly and watch its center spin in place while
+    the other five sit still; then try to invent <em>any</em> turn that could trade two
+    centers. (You can't: every turn spins exactly one center in place.) For live help, the
+    beginner-friendly community at <a href="https://www.reddit.com/r/Cubers/">r/Cubers</a>
+    answers questions like this daily. When the piece view clicks, continue to
+    <a href="0002-the-six-turns.html">Lesson 2: reading and writing the six turns</a>.
+  </div>
+
+  <div class="lesson-nav">
+    <span><a href="../index.html">⌂ Course home</a></span>
+    <span>Lesson 1 of the course</span>
+    <span><a href="../reference/glossary.html">Glossary</a> · <a href="0002-the-six-turns.html">Lesson 2 →</a></span>
+  </div>
+</body>
+</html>

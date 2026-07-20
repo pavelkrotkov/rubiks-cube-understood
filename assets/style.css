@@ -1,0 +1,225 @@
+/* Shared stylesheet for the Rubik's Cube course.
+   Tufte-inspired: generous margins, readable serif body, restrained color.
+   Every lesson and reference doc links this file. */
+
+:root {
+  --ink: #1a1a1a;
+  --ink-soft: #4a4a4a;
+  --paper: #fdfcf9;
+  --rule: #d8d4c8;
+  --accent: #b00020;        /* cube red, used sparingly */
+  --note-bg: #f4f1e8;
+  --maxw: 42rem;
+
+  /* Standard Rubik's cube face colors, for diagrams */
+  --cube-white:  #fafafa;
+  --cube-yellow: #ffd500;
+  --cube-red:    #c41e3a;
+  --cube-orange: #ff5800;
+  --cube-blue:   #0051ba;
+  --cube-green:  #009e60;
+  --cube-edge:   #1a1a1a;
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: 18px; }
+
+body {
+  margin: 0 auto;
+  max-width: var(--maxw);
+  padding: 3.5rem 1.5rem 6rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Course chrome --- */
+.eyebrow {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 0.4rem;
+}
+
+h1 {
+  font-size: 1.9rem;
+  line-height: 1.15;
+  margin: 0 0 0.3rem;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0 0 2rem;
+  font-size: 1.05rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 2.6rem 0 0.6rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+h3 { font-size: 1.05rem; margin: 1.8rem 0 0.4rem; }
+
+p, li { color: var(--ink); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(176,0,32,0.3); }
+a:hover { border-bottom-color: var(--accent); }
+
+/* --- Callout boxes --- */
+.note, .why, .try, .recall {
+  background: var(--note-bg);
+  border-left: 3px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.9rem 1.1rem;
+  margin: 1.4rem 0;
+}
+.why   { border-left-color: var(--accent); }
+.try   { border-left-color: var(--cube-green); }
+.recall{ border-left-color: var(--cube-blue); }
+
+.note .label, .why .label, .try .label, .recall .label {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--ink-soft);
+}
+
+/* --- Notation chips --- */
+.move {
+  font-family: "SF Mono", ui-monospace, Menlo, monospace;
+  background: #efece2;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.05em 0.4em;
+  font-size: 0.92em;
+  white-space: nowrap;
+}
+
+/* --- Notation tables (glossary + lessons) --- */
+table.notation { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.95rem; }
+table.notation th, table.notation td {
+  border-bottom: 1px solid var(--rule); padding: 0.5rem 0.6rem; text-align: left;
+}
+table.notation th {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--ink-soft);
+}
+
+/* --- Featured algorithm display --- */
+.alg-display {
+  text-align: center;
+  font-size: 1.3rem;
+  margin: 1.1rem 0;
+  color: var(--accent);
+  font-family: "SF Mono", ui-monospace, Menlo, monospace;
+}
+
+/* --- Margin notes (Tufte) --- */
+.sidenote {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* --- Footer / nav --- */
+.lesson-nav {
+  margin-top: 4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--rule);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.ask-teacher {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.85rem;
+  background: var(--note-bg);
+  border: 1px dashed var(--rule);
+  border-radius: 6px;
+  padding: 0.9rem 1.1rem;
+  margin-top: 2.5rem;
+  color: var(--ink-soft);
+}
+
+/* --- Quiz widget hook (styles for assets/quiz.js) --- */
+.quiz { margin: 1.5rem 0; }
+.quiz .q { font-weight: 600; margin-bottom: 0.6rem; }
+.quiz button.opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.98rem;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  margin: 0.4rem 0;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+.quiz button.opt:hover:enabled { background: var(--note-bg); }
+.quiz button.opt:disabled { cursor: default; color: var(--ink); opacity: 1; }
+.quiz button.opt.correct { background: #e3f3e8; border-color: var(--cube-green); }
+.quiz button.opt.wrong   { background: #f7e3e6; border-color: var(--accent); }
+.quiz .feedback {
+  margin-top: 0.6rem;
+  font-size: 0.92rem;
+  min-height: 1.2rem;
+  color: var(--ink-soft);
+}
+
+/* --- Simple cube net diagram helper --- */
+.facelet { stroke: var(--cube-edge); stroke-width: 2; }
+.facelet-any  { fill: #d8d4c8; }   /* "color doesn't matter here" */
+.facelet-dim  { fill: #eceade; }   /* de-emphasized (ignore these) */
+
+/* --- Diagram figures --- */
+.figrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 1.6rem 0;
+}
+.figrow figure { margin: 0; text-align: center; }
+.figrow figcaption {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-top: 0.45rem;
+  max-width: 13rem;
+  line-height: 1.4;
+}
+.figrow svg { display: block; margin: 0 auto; }
+.fig-label {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: var(--ink-soft);
+}
+
+@media print {
+  body { background: #fff; }
+  .ask-teacher, .lesson-nav { display: none; }
+}

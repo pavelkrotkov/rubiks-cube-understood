@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 6 — The Yellow Cross</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/quiz.js"></script>
+</head>
+<body>
+  <p class="eyebrow">Lesson 6 · Last Layer</p>
+  <h1>The Yellow Cross</h1>
+  <p class="subtitle">Orientation, isolated — and your first glimpse of <em>conjugation</em>: an algorithm you already know, wrapped in a setup.</p>
+
+  <p>Two layers are solved (<a href="0005-the-middle-layer.html">Lesson 5</a>). Flip the cube
+  so <strong>yellow is now on top</strong>. The last layer is solved in stages, and here's the
+  elegant part tied to everything you've learned: the last layer splits cleanly into
+  <strong>orientation</strong> then <strong>position</strong>. This lesson does orientation for
+  the <em>edges</em> only — we make the yellow cross and ignore where the pieces sit.</p>
+
+  <div class="why">
+    <span class="label">Why we deliberately ignore position now</span>
+    Remember from <a href="0001-pieces-not-stickers.html">Lesson 1</a>: a piece has a position
+    <em>and</em> an orientation. The last-layer method attacks them one at a time. Right now we
+    only care that each yellow edge has its yellow sticker facing <strong>up</strong> — not
+    whether it's in the right spot. Splitting a hard problem into orientation-then-position is
+    the core trick of the whole last layer.
+  </div>
+
+  <h2>The one algorithm</h2>
+  <p class="alg-display">F R U R' U' F'</p>
+  <p>Look at just the yellow <em>edges</em> on top (ignore corners). You'll see one of three
+  patterns. The procedure is a <strong>loop</strong>: look at the pattern, hold the cube
+  correctly for it, apply the algorithm <em>once</em>, then <strong>stop and look again</strong>
+  before the next application — the pattern (and the correct grip) changes each round:</p>
+
+  <ul>
+    <li><strong>Dot</strong> — no yellow edges up. Any grip works this round. Expect
+      <strong>3 rounds</strong> total.</li>
+    <li><strong>L-shape</strong> — two yellow edges forming a bend. Hold so the bend sits at the
+      <strong>back and left</strong>, then apply. Expect <strong>2 rounds</strong> from here.</li>
+    <li><strong>Line</strong> — two yellow edges in a row. Hold it <strong>horizontal</strong>
+      (left–right), then apply. <strong>1 round</strong> from here.</li>
+  </ul>
+
+  <div class="figrow">
+    <figure>
+      <svg width="104" height="126" viewBox="0 0 104 126" role="img" aria-label="Dot pattern: only the yellow center shows on top">
+        <rect class="facelet facelet-dim" x="10" y="10" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="38" y="10" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="66" y="10" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="10" y="38" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-yellow)" x="38" y="38" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="66" y="38" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="10" y="66" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="38" y="66" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="66" y="66" width="28" height="28"/>
+        <text class="fig-label" x="52" y="116" text-anchor="middle">front</text>
+      </svg>
+      <figcaption><strong>Dot</strong> — no yellow edges up. Any grip this round.</figcaption>
+    </figure>
+    <figure>
+      <svg width="104" height="126" viewBox="0 0 104 126" role="img" aria-label="L-shape pattern: yellow edges at the back and left, bend at back-left">
+        <rect class="facelet facelet-dim" x="10" y="10" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-yellow)" x="38" y="10" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="66" y="10" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-yellow)" x="10" y="38" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-yellow)" x="38" y="38" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="66" y="38" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="10" y="66" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="38" y="66" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="66" y="66" width="28" height="28"/>
+        <text class="fig-label" x="52" y="116" text-anchor="middle">front</text>
+      </svg>
+      <figcaption><strong>L-shape</strong> — hold the bend at <strong>back-left</strong>, exactly as shown.</figcaption>
+    </figure>
+    <figure>
+      <svg width="104" height="126" viewBox="0 0 104 126" role="img" aria-label="Line pattern: yellow edges at left and right, horizontal">
+        <rect class="facelet facelet-dim" x="10" y="10" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="38" y="10" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="66" y="10" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-yellow)" x="10" y="38" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-yellow)" x="38" y="38" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-yellow)" x="66" y="38" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="10" y="66" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="38" y="66" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="66" y="66" width="28" height="28"/>
+        <text class="fig-label" x="52" y="116" text-anchor="middle">front</text>
+      </svg>
+      <figcaption><strong>Line</strong> — hold it <strong>horizontal</strong> (left–right), never vertical.</figcaption>
+    </figure>
+  </div>
+  <p class="sidenote" style="text-align:center;">Top views of the yellow face, front toward you.
+  Beige = any color may be there; pale = corners, ignored this step.</p>
+
+  <div class="why">
+    <span class="label">Why the re-look between rounds is not optional</span>
+    Each application walks the pattern forward — <strong>dot → L → line → cross</strong> — but
+    the new pattern lands wherever the algorithm leaves it, <em>not</em> where you'd next need to
+    hold it. From a dot, the L appears at the <strong>front-right</strong>, and you must bring it
+    to back-left before the next application. Blindly applying three times without re-gripping
+    walks you in a circle, right back to the dot. One algorithm, yes — but re-aim between shots.
+  </div>
+
+  <div class="note">
+    <span class="label">Self-check: nothing changed?</span>
+    If you apply the algorithm and the edge pattern looks <em>identical</em>, you held an L with
+    its bend at the back-<em>right</em> — the one grip where the algorithm's effect cancels out on
+    the pattern. Rotate the top two yellow edges to the back-left and go again.
+  </div>
+
+  <div class="why">
+    <span class="label">The big idea: this is <em>conjugation</em></span>
+    Read the algorithm as brackets: <span class="move">F</span> &nbsp;(<span class="move">R U R' U'</span>)&nbsp; <span class="move">F'</span>.
+    The middle is your <strong>corner trigger from <a href="0004-first-layer-corners.html">Lesson 4</a></strong>.
+    The outer <span class="move">F</span> and <span class="move">F'</span> are a
+    <strong>setup and its undo</strong>: <span class="move">F</span> moves top edges out of the
+    top layer, into the trigger's reach, the trigger does its flipping work, and
+    <span class="move">F'</span> puts the front back. That pattern — <em>do X, act, undo X</em> —
+    is called <strong>conjugation</strong>, and it's how cubers aim a known tool at a new target.
+    You're not learning a random six-move string; you're seeing a tool you already own, pointed
+    somewhere new.
+    <span class="sidenote">Conjugation is a central move in group theory: same operation, viewed
+    from a shifted setup.</span>
+  </div>
+
+  <div class="try">
+    <span class="label">Do this now</span>
+    Get to the last layer, yellow up. Run the loop: look at the edge pattern, grip per the list
+    above, apply <span class="move">F R U R' U' F'</span> once, then <em>stop and re-look</em>
+    before going again. Watch the pattern climb dot → L → line → cross round by round. Don't
+    worry that colors on the sides don't match yet — that's the next lesson.
+  </div>
+
+  <h2>How to verify</h2>
+  <p>The top face shows a solid yellow <strong>plus sign</strong> (center + four edges). The four
+  yellow corners are probably still wrong — that's expected. Only the cross matters here.</p>
+
+  <h2>Check yourself</h2>
+
+  <div class="quiz" data-answer="1">
+    <div class="q">During the yellow cross, what are we actually fixing?</div>
+    <button class="opt">The position of the edges</button>
+    <button class="opt">The orientation of the edges</button>
+    <button class="opt">The colors of the corners</button>
+    <div class="feedback"
+         data-correct="Right — only orientation: getting yellow to face up. Position comes later."
+         data-wrong="Only orientation here — flipping yellow to face up. Where each edge sits is handled in the next lesson."></div>
+  </div>
+
+  <div class="quiz" data-answer="0">
+    <div class="q">In F R U R' U' F', what is the middle part R U R' U'?</div>
+    <button class="opt">The corner trigger from before</button>
+    <button class="opt">A brand-new random string</button>
+    <button class="opt">The middle-layer edge insert</button>
+    <div class="feedback"
+         data-correct="Yes — it's the Lesson 4 trigger, here wrapped by F … F' to aim it at the top edges."
+         data-wrong="It's your first-layer corner trigger, R U R' U', now conjugated by F and F' to target the last-layer edges."></div>
+  </div>
+
+  <div class="quiz" data-answer="2">
+    <div class="q">What does the outer F … F' pair do in the algorithm?</div>
+    <button class="opt">Nothing, they simply cancel</button>
+    <button class="opt">They solve the corners fully</button>
+    <button class="opt">Set up, then undo the setup</button>
+    <div class="feedback"
+         data-correct="Right — F stages the pieces, the trigger acts, F' restores the front. That's conjugation."
+         data-wrong="They're a setup and its undo: F tips edges into reach, the trigger acts, F' puts the front back — conjugation."></div>
+  </div>
+
+  <div class="recall">
+    <span class="label">Lock it in — from memory</span>
+    Which property (position or orientation) does the yellow cross fix? What are the three
+    starting patterns and how many times do you apply the algorithm for each? What does
+    "conjugation" mean, in the shape <em>do X · act · undo X</em>?
+  </div>
+
+  <h2>Read this next</h2>
+  <p><strong>Primary source:</strong> the yellow-cross step of
+  <a href="https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/">
+  Ruwix — Beginner's Method</a>, with pictures of the dot / L / line cases. For the deeper idea,
+  the <a href="https://www.geometer.org/rubik/group.pdf">Tom Davis notes</a> cover conjugation
+  directly — skim the conjugation section if you're curious.</p>
+
+  <div class="ask-teacher">
+    <strong>Stuck or curious?</strong> The two failure modes here are both grip mistakes:
+    the pattern didn't change (L held at back-right — see the self-check above), or the
+    pattern went <em>backwards</em> toward the dot (line held vertical instead of horizontal,
+    or an un-regripped L). Either way the fix is the same: stop, re-read the pattern, re-grip,
+    apply once. You can't damage anything below — the algorithm only ever touches the last
+    layer's arrangement — so mis-grips cost a round, never the solve. Once you have a solid
+    yellow cross, continue to <a href="0007-positioning-the-edges.html">Lesson 7: positioning
+    the last-layer edges</a>.
+  </div>
+
+  <div class="lesson-nav">
+    <span><a href="../index.html">⌂ Course home</a></span>
+    <span><a href="0005-the-middle-layer.html">← Lesson 5</a></span>
+    <span><a href="../reference/algorithms.html">Cheat-Sheet</a> · <a href="0007-positioning-the-edges.html">Lesson 7 →</a></span>
+  </div>
+</body>
+</html>

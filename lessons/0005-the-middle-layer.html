@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 5 — The Middle Layer</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/quiz.js"></script>
+</head>
+<body>
+  <p class="eyebrow">Lesson 5 · Middle Layer</p>
+  <h1>The Middle Layer</h1>
+  <p class="subtitle">Placing edges into a layer with solved layers on both sides — using a mirror-image pair, and understanding why it's a pair.</p>
+
+  <p>Your first layer is done (<a href="0004-first-layer-corners.html">Lesson 4</a>).
+  Keep <strong>white down, yellow up.</strong> Now we fill the four edges of the middle
+  layer — the trickiest-seeming step, because the slot you're filling has a solved layer
+  right below it. The magic is an algorithm that opens a slot, tucks an edge in, and puts
+  everything back.</p>
+
+  <h2>Which pieces even go here?</h2>
+  <p>The last layer will be yellow, so <strong>any edge with yellow on it belongs on top,
+  not here.</strong> That means the four middle edges are exactly the ones with <em>no
+  yellow</em>. So the first move is always: find a top-layer edge that has no yellow.</p>
+
+  <div class="why">
+    <span class="label">Why "no yellow" is the whole filter</span>
+    Every edge has two colors. A middle-layer edge sits between two side centers (say blue
+    and red) — neither of which is yellow. So if a top edge shows yellow, it can't live in
+    the middle; it's a last-layer piece. This one rule tells you which edges to grab and
+    which to ignore.
+  </div>
+
+  <h2>Step 1 — align, to see where it goes</h2>
+  <p>Take a no-yellow top edge. Turn the top (<span class="move">U</span>) until its
+  <strong>front-facing color matches the center of that front face</strong> — the edge and
+  center make a little upside-down <strong>T</strong>. Now the edge's <em>other</em> color
+  (the one pointing up) tells you its destination:</p>
+  <ul>
+    <li>Up-color matches the <strong>right</strong> center → it goes <strong>right</strong>.</li>
+    <li>Up-color matches the <strong>left</strong> center → it goes <strong>left</strong>.</li>
+  </ul>
+
+  <div class="figrow">
+    <figure>
+      <svg width="142" height="152" viewBox="0 0 142 152" role="img" aria-label="Upside-down T with the edge's up sticker matching the right center: insert to the right">
+        <rect class="facelet" fill="var(--cube-green)" x="38" y="10" width="28" height="28"/>
+        <path d="M 70,24 L 96,24" fill="none" stroke="var(--cube-green)" stroke-width="2.5"/>
+        <path d="M 92,18 L 100,24 L 92,30" fill="none" stroke="var(--cube-green)" stroke-width="2.5"/>
+        <rect class="facelet" fill="var(--cube-green)" x="104" y="10" width="28" height="28"/>
+        <text class="fig-label" x="118" y="50" text-anchor="middle">R center</text>
+        <rect class="facelet facelet-dim" x="10" y="44" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-red)" x="38" y="44" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="66" y="44" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="10" y="72" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-red)" x="38" y="72" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="66" y="72" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-red)" x="10" y="100" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-red)" x="38" y="100" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-red)" x="66" y="100" width="28" height="28"/>
+        <text class="fig-label" x="52" y="146" text-anchor="middle">front face</text>
+      </svg>
+      <figcaption>The upside-down <strong>T</strong> (red), plus the edge's up sticker
+      matching the <strong>right</strong> center → right insertion.</figcaption>
+    </figure>
+    <figure>
+      <svg width="142" height="152" viewBox="0 0 142 152" role="img" aria-label="Upside-down T with the edge's up sticker matching the left center: insert to the left">
+        <rect class="facelet" fill="var(--cube-blue)" x="10" y="10" width="28" height="28"/>
+        <text class="fig-label" x="24" y="50" text-anchor="middle">L center</text>
+        <path d="M 72,24 L 46,24" fill="none" stroke="var(--cube-blue)" stroke-width="2.5"/>
+        <path d="M 50,18 L 42,24 L 50,30" fill="none" stroke="var(--cube-blue)" stroke-width="2.5"/>
+        <rect class="facelet" fill="var(--cube-blue)" x="76" y="10" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="48" y="44" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-red)" x="76" y="44" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="104" y="44" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="48" y="72" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-red)" x="76" y="72" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="104" y="72" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-red)" x="48" y="100" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-red)" x="76" y="100" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-red)" x="104" y="100" width="28" height="28"/>
+        <text class="fig-label" x="90" y="146" text-anchor="middle">front face</text>
+      </svg>
+      <figcaption>Same T, up sticker matching the <strong>left</strong> center → left
+      insertion (the mirror).</figcaption>
+    </figure>
+  </div>
+  <p class="sidenote" style="text-align:center;">Front view. The small square above the face is
+  the edge's <em>up</em>-facing sticker, folded toward you. Solid bottom row = your finished
+  first layer; beige = unsolved middle edges.</p>
+
+  <h2>Step 2 — send it with the matching algorithm</h2>
+  <div style="background:#fff;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;">
+    <strong>Right insertion</strong>
+    <p class="alg-display" style="text-align:left;font-size:1.15rem;margin:.4rem 0;">U R U' R' U' F' U F</p>
+    <strong>Left insertion</strong> <span class="sidenote">(the exact mirror)</span>
+    <p class="alg-display" style="text-align:left;font-size:1.15rem;margin:.4rem 0;">U' L' U L U F U' F'</p>
+  </div>
+  <p>Both live on your <a href="../reference/algorithms.html">algorithm cheat-sheet</a>.</p>
+
+  <div class="why">
+    <span class="label">Why they're mirror images — the real insight</span>
+    Look closely: the left algorithm is the right algorithm <em>reflected</em> — every
+    <span class="move">R</span> becomes an <span class="move">L</span>, and <strong>every turn's
+    direction reverses</strong>: <span class="move">U</span>↔<span class="move">U'</span>,
+    <span class="move">F</span>↔<span class="move">F'</span>,
+    <span class="move">R</span>↔<span class="move">L'</span>. Check it move by move — the two
+    sequences pair up perfectly under that rule. That's not a coincidence you must memorize twice; it's <strong>one idea
+    seen in a mirror.</strong> The cube is symmetric left-to-right, so the move that tucks
+    an edge rightward, reflected, tucks an edge leftward. Learn one and you half-know the
+    other.
+    <span class="sidenote">This reflection symmetry is a genuine structural property of the
+    cube group — the same operation conjugated by a mirror.</span>
+  </div>
+
+  <div class="why">
+    <span class="label">Why the layer below survives</span>
+    The algorithm briefly lifts a first-layer corner out of the way, slides the edge into
+    the middle slot, and then <em>reverses</em> the disturbance — the later moves undo the
+    earlier ones, restoring the white layer. Same surgical principle as the corner trigger:
+    disturb, insert, restore.
+  </div>
+
+  <div class="try">
+    <span class="label">Do this now</span>
+    Find a no-yellow top edge, align it to its front center (upside-down T), read its
+    up-color, and run the matching algorithm slowly. Watch a corner briefly rise and settle
+    back as the edge drops into the middle. Place all four.
+  </div>
+
+  <h2>The stuck-edge case</h2>
+  <p>Sometimes every no-yellow edge is already <em>down</em> in the middle layer but in the
+  wrong slot or flipped. There's nothing in the top to work with. Fix: run either algorithm
+  to insert <em>any</em> top edge into that slot — this <strong>kicks the wrong edge up</strong>
+  into the top layer. Now it's available; align it and insert it properly.</p>
+
+  <h2>How to verify</h2>
+  <p>Two full layers should now be solid: the entire white face, and the top two-thirds of
+  every side face forming matching blocks. Only the yellow (top) layer remains scrambled.</p>
+
+  <h2>Check yourself</h2>
+
+  <div class="quiz" data-answer="1">
+    <div class="q">Which top-layer edges are the ones that belong in the middle layer?</div>
+    <button class="opt">Only edges that show yellow</button>
+    <button class="opt">Only edges without any yellow</button>
+    <button class="opt">Only edges touching a corner</button>
+    <div class="feedback"
+         data-correct="Right — middle edges never carry yellow, since yellow is the last layer."
+         data-wrong="Yellow belongs on top. A middle edge sits between two non-yellow centers, so it has no yellow."></div>
+  </div>
+
+  <div class="quiz" data-answer="2">
+    <div class="q">After aligning an edge into an upside-down T, what tells you left vs right?</div>
+    <button class="opt">The color of the nearest corner</button>
+    <button class="opt">Whichever center is closer by</button>
+    <button class="opt">Which center its up-color matches</button>
+    <div class="feedback"
+         data-correct="Right — the up-facing color matches the left or right center, naming its direction."
+         data-wrong="Read the edge's up-facing color: if it matches the right center, go right; the left center, go left."></div>
+  </div>
+
+  <div class="quiz" data-answer="0">
+    <div class="q">Why is the left insertion algorithm a mirror of the right one?</div>
+    <button class="opt">The cube is symmetric left-to-right</button>
+    <button class="opt">Left turns are always inverted</button>
+    <button class="opt">The two share no real relation</button>
+    <div class="feedback"
+         data-correct="Exactly — reflect the rightward tuck across the mirror and you get the leftward one."
+         data-wrong="It's the cube's left-right symmetry: the same insertion, reflected, becomes the other-side insertion."></div>
+  </div>
+
+  <div class="recall">
+    <span class="label">Lock it in — from memory</span>
+    What single property (one word) tells you an edge belongs in the middle, not the top?
+    How do you decide left vs right after aligning? In one sentence, why do you only need to
+    truly memorize <em>one</em> of the two algorithms? How do you free a stuck middle edge?
+  </div>
+
+  <h2>Read this next</h2>
+  <p><strong>Primary source:</strong> the second-layer step of
+  <a href="https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/">
+  Ruwix — Beginner's Method</a>, which shows the alignment images for choosing the
+  algorithm. Match its pictures to what your own cube shows.</p>
+
+  <div class="ask-teacher">
+    <strong>Stuck or curious?</strong> If you can't form the upside-down T, you're probably
+    trying to match the edge's <em>up</em>-facing color instead of its front-facing one —
+    turn <span class="move">U</span> and watch the front sticker only. If an edge sits in its
+    correct middle slot but <em>flipped</em>, treat it as stuck: kick it out by inserting any
+    top edge into that slot, then place it properly. To really own this step, run the
+    right-hand algorithm one move at a time and watch the "lift, insert, restore" happen —
+    the disturb-do-restore pattern has a formal name, <em>conjugation</em>, coming up next
+    lesson. Once two full layers are solid, continue to
+    <a href="0006-the-yellow-cross.html">Lesson 6: the yellow cross</a>.
+  </div>
+
+  <div class="lesson-nav">
+    <span><a href="../index.html">⌂ Course home</a></span>
+    <span><a href="0004-first-layer-corners.html">← Lesson 4</a></span>
+    <span><a href="../reference/algorithms.html">Cheat-Sheet</a> · <a href="0006-the-yellow-cross.html">Lesson 6 →</a></span>
+  </div>
+</body>
+</html>

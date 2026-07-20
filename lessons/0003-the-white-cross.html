@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 3 — The White Cross, by Reasoning</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/quiz.js"></script>
+</head>
+<body>
+  <p class="eyebrow">Lesson 3 · First Layer</p>
+  <h1>The White Cross, by Reasoning</h1>
+  <p class="subtitle">Your first real solving step — and the proof that the cube is logic, not luck. No algorithm required.</p>
+
+  <p>Everything from <a href="0001-pieces-not-stickers.html">Lesson 1</a> pays off now.
+  Because you think in <strong>pieces</strong> with a <strong>position</strong> and an
+  <strong>orientation</strong>, you can solve this entire step by pure thought. There's no
+  sequence to memorize here — only a question to keep asking.</p>
+
+  <h2>The goal, stated precisely</h2>
+  <p>Put <strong>white on the bottom</strong> (so the white center faces down, yellow up).
+  We want the four <strong>white edge pieces</strong> placed around the white center to form
+  a cross on the bottom — <em>but with one strict condition.</em></p>
+
+  <div class="why">
+    <span class="label">The condition most beginners ignore</span>
+    Each white edge has <strong>two</strong> colors — white plus one other (say white-blue).
+    Its one true home is between the two centers of <em>those</em> colors. So a white-blue
+    edge belongs touching the white center <em>and</em> the blue center. A cross where
+    white lines up on the bottom but the side colors don't match the side centers is
+    <strong>not solved</strong> — it just looks like a plus sign. Position <em>and</em>
+    orientation, both.
+  </div>
+
+  <div class="try">
+    <span class="label">See the trap with your own cube</span>
+    Find any white edge and place it so white points down. Now look at its
+    <em>side</em> color and the center right above it on that side face. If they don't
+    match, the piece is in the wrong home even though the bottom "looks" right. That
+    mismatch is the whole reason the cross takes thought.
+  </div>
+
+  <h2>The reasoning question</h2>
+  <p>For each white edge, ask: <strong>"Which two centers does this piece belong between?"</strong>
+  The answer is fixed by the piece's own two colors. Then your job is just to get it
+  there with white facing down. That's the entire step.</p>
+
+  <h2>A reliable, reasoning-friendly technique: the daisy</h2>
+  <p>Here's a clean way to do it that you can fully follow, not just copy:</p>
+  <ol>
+    <li><strong>Make a daisy on top.</strong> With yellow on top, bring all four white
+      edges up next to the yellow center so each shows <em>white facing up</em> — a
+      yellow center ringed by four white "petals." Turn faces to ferry white edges to the
+      top; don't worry about side colors yet. <strong>One rule keeps you safe:</strong> before
+      turning any face to raise a new petal, first turn <span class="move">U</span> so no
+      petal you've already made is sitting above that face — otherwise the turn knocks it
+      back off.
+      <span class="sidenote">This stages all four pieces where you can see and aim them.</span></li>
+    <li><strong>Aim one petal.</strong> Pick a white petal. Turn the <em>top</em> (<span class="move">U</span>)
+      until that petal's <strong>other</strong> color matches the center of the side face
+      directly below it (e.g. the blue side color sits above the blue center).</li>
+    <li><strong>Drop it down.</strong> Turn that whole side face <strong>180°</strong>
+      (e.g. <span class="move">F2</span>). The white edge swings straight down to the
+      bottom, into its true home, white facing down.</li>
+    <li><strong>Repeat</strong> for the other three petals. Aim with <span class="move">U</span>,
+      drop with a double turn of that side face (<span class="move">F2</span>,
+      <span class="move">R2</span>, <span class="move">B2</span>, or <span class="move">L2</span>).
+      Done — a correct white cross.</li>
+  </ol>
+
+  <div class="figrow">
+    <figure>
+      <svg width="104" height="126" viewBox="0 0 104 126" role="img" aria-label="Daisy: four white edges around the yellow center, viewed from the top">
+        <rect class="facelet facelet-dim" x="10" y="10" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-white)" x="38" y="10" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="66" y="10" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-white)" x="10" y="38" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-yellow)" x="38" y="38" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-white)" x="66" y="38" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="10" y="66" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-white)" x="38" y="66" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="66" y="66" width="28" height="28"/>
+        <text class="fig-label" x="52" y="116" text-anchor="middle">top (yellow) face</text>
+      </svg>
+      <figcaption><strong>Step 1, done:</strong> the daisy — four white petals around the
+      yellow center. Side colors don't matter yet.</figcaption>
+    </figure>
+    <figure>
+      <svg width="104" height="160" viewBox="0 0 104 160" role="img" aria-label="An aimed petal dropping down the front face with a double turn">
+        <defs>
+          <marker id="drop-arrow" viewBox="0 0 8 8" refX="6.5" refY="4" markerWidth="5.5" markerHeight="5.5" orient="auto">
+            <path d="M0,0 L8,4 L0,8 z" fill="var(--accent)"/>
+          </marker>
+        </defs>
+        <rect class="facelet" fill="var(--cube-white)" x="38" y="10" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="10" y="44" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-blue)" x="38" y="44" width="28" height="28"/>
+        <rect class="facelet facelet-dim" x="66" y="44" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="10" y="72" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-blue)" x="38" y="72" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="66" y="72" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="10" y="100" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="38" y="100" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="66" y="100" width="28" height="28"/>
+        <path d="M 52,62 L 52,110" fill="none" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#drop-arrow)"/>
+        <text class="fig-label" x="66" y="92">F2</text>
+        <text class="fig-label" x="52" y="152" text-anchor="middle">front face</text>
+      </svg>
+      <figcaption><strong>Steps 2–3:</strong> aimed — the petal's side color matches the
+      center below (white on top, folded toward you). <span class="move">F2</span> swings it
+      straight down; white lands on the bottom.</figcaption>
+    </figure>
+    <figure>
+      <svg width="104" height="126" viewBox="0 0 104 126" role="img" aria-label="Verification: on each side face, the center and the sticker below it match">
+        <rect class="facelet facelet-any" x="10" y="10" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="38" y="10" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="66" y="10" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="10" y="38" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-blue)" x="38" y="38" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="66" y="38" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="10" y="66" width="28" height="28"/>
+        <rect class="facelet" fill="var(--cube-blue)" x="38" y="66" width="28" height="28"/>
+        <rect class="facelet facelet-any" x="66" y="66" width="28" height="28"/>
+        <text class="fig-label" x="52" y="116" text-anchor="middle">any side face</text>
+      </svg>
+      <figcaption><strong>Verify:</strong> every side face shows this matching two-sticker
+      column. (The full "T" arrives with Lesson 4's corners.)</figcaption>
+    </figure>
+  </div>
+
+  <div class="why">
+    <span class="label">Why the 180° drop is safe</span>
+    A half-turn of a side face carries the top edge to the bottom on the <em>same</em>
+    face — so the side color stays matched to its center, and white ends up down. Because
+    you aimed first, the piece lands both correctly positioned and correctly oriented in
+    one move. That's reasoning doing the work an algorithm would otherwise do.
+  </div>
+
+  <div class="try">
+    <span class="label">Do the whole thing now</span>
+    Scramble, then solve the white cross with the daisy method. When you think it's
+    done, keep white on the bottom and run the <strong>verification</strong> below before
+    trusting it.
+  </div>
+
+  <h2>How to verify (don't skip)</h2>
+  <p>Hold white on the bottom and look at the four side faces. On each side you should see
+  a matching <strong>two-sticker column</strong>: the center, and directly below it the
+  edge's side sticker in the same color. (Tilt the cube to peek underneath and confirm the
+  white plus-sign too.) If all four sides match, your cross is genuinely solved — not just
+  plus-shaped. <span class="sidenote">A full matching "T" on each side arrives in Lesson 4,
+  once the corners join the row.</span></p>
+
+  <h2>Check yourself</h2>
+
+  <div class="quiz" data-answer="1">
+    <div class="q">A white-green edge piece belongs in which single home?</div>
+    <button class="opt">Anywhere along the white face</button>
+    <button class="opt">Between the white and green centers</button>
+    <button class="opt">Between the green and yellow centers</button>
+    <div class="feedback"
+         data-correct="Its two colors name its home: white + green centers. Exactly one spot."
+         data-wrong="A piece's colors fix its home. White-green belongs between the white and green centers — nowhere else."></div>
+  </div>
+
+  <div class="quiz" data-answer="2">
+    <div class="q">White lines up on the bottom but a side color doesn't match its center. This is…</div>
+    <button class="opt">Fully solved, leave it</button>
+    <button class="opt">A wrong-colored piece</button>
+    <button class="opt">The right piece, wrong spot</button>
+    <div class="feedback"
+         data-correct="Right — colors can't be wrong; it's a correct edge in the wrong home. Re-place it."
+         data-wrong="Stickers are welded, so the piece is fine — it's just in the wrong home. Position isn't solved yet."></div>
+  </div>
+
+  <div class="quiz" data-answer="0">
+    <div class="q">After aiming a daisy petal, why does a 180° side turn place it correctly?</div>
+    <button class="opt">The side color stays put while white swings down</button>
+    <button class="opt">The half-turn flips the piece onto fresh colors</button>
+    <button class="opt">Half-turns drop pieces only from the front face</button>
+    <div class="feedback"
+         data-correct="Exactly — a half-turn moves the edge top-to-bottom on the same face, so the matched side color is preserved and white faces down."
+         data-wrong="A half-turn keeps the edge on that same face (so its matched side color stays put) while carrying white to the bottom. Works on any side face."></div>
+  </div>
+
+  <div class="recall">
+    <span class="label">Lock it in — from memory</span>
+    What single question do you ask of every white edge? What's the difference between
+    a cross that "looks right" and one that <em>is</em> right? How do you verify a
+    finished cross?
+  </div>
+
+  <h2>Read this next</h2>
+  <p><strong>Primary source:</strong> the "white cross" section of
+  <a href="https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/">
+  Ruwix — Beginner's Method</a>. It shows the same step with diagrams. Notice it, too,
+  stresses matching the side centers — confirm your understanding against it.</p>
+
+  <div class="ask-teacher">
+    <strong>Stuck or curious?</strong> If a new petal keeps knocking an old one off, you're
+    skipping the shelter rule — turn <span class="move">U</span> first so no finished petal
+    sits above the face you're about to turn. If an edge shows white <em>sideways</em> in the
+    top layer, one turn of its side face reorients it for the daisy. And why white first? No
+    deep reason — any color works; white-then-yellow is just the convention most guides (and
+    this course) share, which makes other resources easier to follow. Once you can build a
+    verified cross reliably, continue to <a href="0004-first-layer-corners.html">Lesson 4:
+    the first-layer corners</a> — your first real algorithm, dissected.
+  </div>
+
+  <div class="lesson-nav">
+    <span><a href="../index.html">⌂ Course home</a></span>
+    <span><a href="0002-the-six-turns.html">← Lesson 2</a></span>
+    <span><a href="../reference/glossary.html">Glossary</a> · <a href="0004-first-layer-corners.html">Lesson 4 →</a></span>
+  </div>
+</body>
+</html>

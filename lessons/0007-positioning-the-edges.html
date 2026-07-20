@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 7 — Positioning the Cross Edges</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/quiz.js"></script>
+</head>
+<body>
+  <p class="eyebrow">Lesson 7 · Last Layer</p>
+  <h1>Positioning the Cross Edges</h1>
+  <p class="subtitle">Orientation is done; now the other half of the split — permutation. Same pieces, different question.</p>
+
+  <p>You have a yellow cross (<a href="0006-the-yellow-cross.html">Lesson 6</a>): all four
+  edges are correctly <strong>oriented</strong> — yellow up. But look at their <em>side</em>
+  stickers: they probably don't match the side centers. The pieces are facing the right way
+  in the wrong homes. In Lesson 1 language: orientation solved, <strong>permutation not.</strong>
+  This lesson fixes exactly that, and nothing else.</p>
+
+  <h2>Step 1 — align for free with U</h2>
+  <p>Before any algorithm, turn just the top (<span class="move">U</span>) and watch the four
+  edge side-stickers sweep past the centers. Check all four stops and settle on the
+  <strong>best</strong> one — the stop where the most edges match. At that best stop, one of
+  three things happens:</p>
+  <ul>
+    <li><strong>All four match</strong> — this step is already done; skip ahead.</li>
+    <li><strong>Two adjacent edges match</strong> (they share a corner of the cube).</li>
+    <li><strong>Two opposite edges match</strong> (they face each other).</li>
+  </ul>
+  <p class="sidenote">At the <em>other</em>, non-best stops you may well see one match or none —
+  that's normal. The guarantees below are about the best stop, and about "three" anywhere.</p>
+
+  <div class="why">
+    <span class="label">Why the best stop always shows four or exactly two</span>
+    Each of the four edges matches its center at exactly <strong>one</strong> of the four
+    <span class="move">U</span> stops. So across the four stops, the match-counts always add up
+    to exactly <strong>4</strong>. That little fact does real work: no stop can ever show
+    <strong>three</strong> matches (if three edges are home, the fourth has nowhere else to go —
+    it must be home too, making four). And the counts can't be spread as 1+1+1+1: each edge's
+    "stops needed to get home" is just a position difference around one shared ring, so the four
+    of them always add up to a multiple of 4 — but four all-different offsets, 0+1+2+3, add to 6.
+    Impossible. So the best stop is always 4, or a 2 (adjacent or opposite) sharing its budget
+    with lesser stops.
+  </div>
+
+  <h2>Step 2 — the swap algorithm</h2>
+  <p class="alg-display">R U R' U R U2 R' U</p>
+  <p>This swaps the <strong>front</strong> and <strong>left</strong> top edges with each other
+  (and leaves the back and right ones in place). So:</p>
+  <ul>
+    <li><strong>Two adjacent match:</strong> hold the cube so the two <em>matched</em> edges are
+      at the <strong>back and right</strong> — the two wrong ones are now at front and left.
+      Apply the algorithm once; all four edges land home (the trailing <span class="move">U</span>
+      is the realignment).</li>
+    <li><strong>Two opposite match:</strong> no grip puts both wrong ones at front-left, so apply
+      the algorithm once from <em>any</em> angle. This scrambles the matching into the adjacent
+      case — realign with <span class="move">U</span> and finish as above.</li>
+  </ul>
+
+  <div class="why">
+    <span class="label">Why the cross doesn't fall apart</span>
+    Look at what the algorithm is made of: only <span class="move">R</span> and
+    <span class="move">U</span> moves (you may recognize the trigger's DNA in it). Every edge it
+    touches gets shuttled between <em>top-layer edge slots</em> and comes back yellow-side-up.
+    It's a <strong>pure permutation</strong> of the cross pieces — it rearranges <em>where</em>
+    they sit without disturbing <em>how</em> they face. That's the orientation/permutation split
+    working for you: this tool moves pieces without twisting them, just as Lesson 6's tool
+    twisted pieces without (net) moving the layers below.
+  </div>
+
+  <div class="try">
+    <span class="label">Do this now</span>
+    Solve to the yellow cross. Turn <span class="move">U</span> slowly and count matches at each
+    of the four stops — confirm the four counts <strong>add up to 4</strong>, that no stop shows
+    exactly three, and that the best stop shows four or exactly two. Then hold and swap as
+    instructed. Verify: all four cross edges match their side centers <em>and</em> yellow still
+    faces up on each. <strong>Heads-up:</strong> the yellow <em>corners</em> will visibly
+    scramble while the algorithm runs — that's expected and allowed; they're the next lesson's
+    problem.
+  </div>
+
+  <h2>Where you now stand</h2>
+  <p>Everything on the cube is solved except the four yellow <strong>corners</strong>. And they
+  break down the same way the edges just did: first put them in the right <em>homes</em>
+  (permutation, <a href="0008-positioning-the-corners.html">Lesson 8</a>), then twist them the
+  right <em>way</em> (orientation, <a href="0009-orienting-the-corners.html">Lesson 9</a> — the
+  final step, and where you'll meet the <strong>commutator</strong>).</p>
+
+  <h2>Check yourself</h2>
+
+  <div class="quiz" data-answer="2">
+    <div class="q">After the yellow cross, what exactly is still wrong with the edges?</div>
+    <button class="opt">Their orientation is still wrong</button>
+    <button class="opt">Their colors have gotten mixed</button>
+    <button class="opt">Their positions are still wrong</button>
+    <div class="feedback"
+         data-correct="Right — yellow-up means orientation is done; the mismatched side stickers are a position (permutation) problem."
+         data-wrong="Yellow already faces up on all four, so orientation is solved. What's left is where they sit — permutation."></div>
+  </div>
+
+  <div class="quiz" data-answer="0">
+    <div class="q">Two adjacent edges match their centers. How do you hold the cube?</div>
+    <button class="opt">Matched pair at the back and right</button>
+    <button class="opt">Matched pair at the front and left</button>
+    <button class="opt">Matched pair on opposite side faces</button>
+    <div class="feedback"
+         data-correct="Right — the algorithm swaps front and left, so park the correct pair at back and right, out of its way."
+         data-wrong="The algorithm swaps the FRONT and LEFT edges, so the already-correct pair must sit at back and right."></div>
+  </div>
+
+  <div class="quiz" data-answer="1">
+    <div class="q">Why does this algorithm leave the yellow cross intact while moving its pieces?</div>
+    <button class="opt">It never touches the top layer</button>
+    <button class="opt">It permutes edges without twisting them</button>
+    <button class="opt">It flips each edge exactly twice</button>
+    <div class="feedback"
+         data-correct="Exactly — it's a pure permutation: pieces trade top-layer homes and land yellow-up again."
+         data-wrong="Every edge it touches lands back yellow-side-up — it changes positions only, never orientations: a pure permutation of the cross pieces."></div>
+  </div>
+
+  <div class="recall">
+    <span class="label">Lock it in — from memory</span>
+    Which half of the Lesson 1 split does this step solve? What are the only three matching
+    patterns <span class="move">U</span> can give you, and why never exactly three? Where do the
+    matched edges go before you run the swap?
+  </div>
+
+  <h2>Read this next</h2>
+  <p><strong>Primary source:</strong> the "swap yellow edges" step of
+  <a href="https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/">
+  Ruwix — Beginner's Method</a> — its diagrams of the adjacent and opposite cases are worth
+  matching against your own cube.</p>
+
+  <div class="ask-teacher">
+    <strong>Stuck or curious?</strong> A worthwhile puzzle: can R-and-U-only algorithms ever
+    break the bottom two layers? Don't assume — trace it. <span class="move">R</span> visibly
+    dips into the bottom layers (it carries a bottom corner and edge up its right column), so
+    "R and U can't touch the bottom" is false; what saves you is that <em>this</em> algorithm
+    returns every borrowed piece before it ends. That's a property of the sequence, not the
+    letters. If your edges end up in a state the two cases don't seem to cover, re-find the
+    best <span class="move">U</span> stop — a mis-count there is the usual cause. When your
+    cross edges all match, continue to <a href="0008-positioning-the-corners.html">Lesson 8:
+    positioning the corners</a> — the finish line is in sight.
+  </div>
+
+  <div class="lesson-nav">
+    <span><a href="../index.html">⌂ Course home</a></span>
+    <span><a href="0006-the-yellow-cross.html">← Lesson 6</a></span>
+    <span><a href="../reference/algorithms.html">Cheat-Sheet</a> · <a href="0008-positioning-the-corners.html">Lesson 8 →</a></span>
+  </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rubik's Cube — Glossary &amp; Notation Reference</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  dl.gloss { margin: 0; }
+  dl.gloss dt {
+    font-weight: 600;
+    margin-top: 1.2rem;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.98rem;
+  }
+  dl.gloss dd { margin: 0.2rem 0 0; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+  <p class="eyebrow">Rubik's Cube · Reference</p>
+  <h1>Glossary &amp; Notation</h1>
+  <p class="subtitle">The shared vocabulary for this course. Every lesson uses these terms exactly.</p>
+
+  <h2>Notation — the six face turns</h2>
+  <p>Hold the cube still and name faces by where they are relative to you. A bare
+  letter = quarter turn (90°) <strong>clockwise</strong> as you look at that face.</p>
+
+  <table class="notation">
+    <tr><th>Letter</th><th>Face</th><th>Turn</th></tr>
+    <tr><td><span class="move">U</span></td><td>Up (top)</td><td>top face 90° clockwise</td></tr>
+    <tr><td><span class="move">D</span></td><td>Down (bottom)</td><td>bottom face 90° clockwise</td></tr>
+    <tr><td><span class="move">L</span></td><td>Left</td><td>left face 90° clockwise</td></tr>
+    <tr><td><span class="move">R</span></td><td>Right</td><td>right face 90° clockwise</td></tr>
+    <tr><td><span class="move">F</span></td><td>Front (facing you)</td><td>front face 90° clockwise</td></tr>
+    <tr><td><span class="move">B</span></td><td>Back</td><td>back face 90° clockwise</td></tr>
+  </table>
+
+  <h3>Modifiers</h3>
+  <table class="notation">
+    <tr><th>Symbol</th><th>Means</th><th>Example</th></tr>
+    <tr><td><span class="move">'</span> (prime)</td><td>counter-clockwise quarter turn</td><td><span class="move">R'</span> = right face anticlockwise</td></tr>
+    <tr><td><span class="move">2</span></td><td>half turn (180°), direction doesn't matter</td><td><span class="move">U2</span> = top face twice</td></tr>
+  </table>
+  <p class="sidenote">"Clockwise" always means as if you were looking straight at that
+  face — so <span class="move">L</span> and <span class="move">R</span> turn in opposite real-world directions.</p>
+
+  <h2>The pieces</h2>
+  <dl class="gloss">
+    <dt>Cubie / piece</dt>
+    <dd>One of the small cubes. There are 26, but the cube behaves as <strong>20 movable pieces</strong> plus 6 fixed centers.</dd>
+
+    <dt>Center</dt>
+    <dd>The single sticker in the middle of each face. <strong>Centers never move relative to each other</strong> — they define each face's color. 6 of them.</dd>
+
+    <dt>Edge</dt>
+    <dd>A piece with <strong>two</strong> stickers, sitting between two centers. 12 of them.</dd>
+
+    <dt>Corner</dt>
+    <dd>A piece with <strong>three</strong> stickers. 8 of them.</dd>
+
+    <dt>Facelet / sticker</dt>
+    <dd>A single colored tile. Useful to point at, but <em>not</em> the right unit of thinking — pieces are.</dd>
+  </dl>
+
+  <h2>The two things you can do to a piece</h2>
+  <dl class="gloss">
+    <dt>Permutation</dt>
+    <dd>Which <strong>position</strong> a piece is in — is it in the right spot? (Where it lives.)</dd>
+
+    <dt>Orientation</dt>
+    <dd>How a piece is <strong>twisted/flipped</strong> within its spot — is it facing the right way? (How it sits.)</dd>
+
+    <dt>Solved</dt>
+    <dd>Every piece is both correctly <em>permuted</em> and correctly <em>oriented</em>.</dd>
+  </dl>
+
+  <h2>Method &amp; algorithm terms</h2>
+  <dl class="gloss">
+    <dt>Algorithm (alg)</dt>
+    <dd>A memorized sequence of moves that produces a known, predictable change to a few pieces.</dd>
+
+    <dt>Inverse</dt>
+    <dd>The undo of a move or algorithm — same moves backwards, each direction reversed. The inverse of <span class="move">R U</span> is <span class="move">U' R'</span>.</dd>
+
+    <dt>Layer</dt>
+    <dd>A 3×3 slice of the cube. The beginner method solves the cube one layer at a time: first, middle, last.</dd>
+
+    <dt>Layer-by-layer (LBL)</dt>
+    <dd>The beginner method this course follows. Singmaster popularized it in 1979.</dd>
+  </dl>
+
+  <div class="ask-teacher">
+    <strong>Terms drift in the wild.</strong> Other guides say "permute/orient the last layer"
+    (PLL/OLL) for what Lessons 6–9 do, and "F2L" for the first two layers. The concepts are
+    the ones defined here. If a term feels fuzzy, revisit
+    <a href="../lessons/0001-pieces-not-stickers.html">Lesson 1</a> and
+    <a href="../lessons/0002-the-six-turns.html">Lesson 2</a>, where this vocabulary is built
+    hands-on.
+  </div>
+
+  <div class="lesson-nav">
+    <span><a href="../index.html">⌂ Course home</a></span>
+    <span><a href="algorithms.html">Algorithm Cheat-Sheet →</a></span>
+  </div>
+</body>
+</html>

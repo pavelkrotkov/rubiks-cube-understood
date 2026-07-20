@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 2 — Reading &amp; Writing the Six Turns</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/quiz.js"></script>
+</head>
+<body>
+  <p class="eyebrow">Lesson 2 · Foundations</p>
+  <h1>Reading &amp; Writing the Six Turns</h1>
+  <p class="subtitle">Notation isn't bureaucracy — it's how an algorithm becomes a thing you can remember, share, and reverse.</p>
+
+  <p>In <a href="0001-pieces-not-stickers.html">Lesson 1</a> you learned <em>what</em>
+  moves: the 20 pieces. Now you need a precise way to say <em>how</em> you move them.
+  Every algorithm you'll ever learn is just a short string in this language — so an
+  hour spent getting fluent here pays off forever.</p>
+
+  <h2>One letter per face</h2>
+  <p>Hold your cube still and don't rotate the whole thing while reading a sequence.
+  Each face gets a letter, named by where it is <em>relative to you</em>:</p>
+
+  <ul>
+    <li><span class="move">U</span> — <strong>U</strong>p (top)</li>
+    <li><span class="move">D</span> — <strong>D</strong>own (bottom)</li>
+    <li><span class="move">L</span> — <strong>L</strong>eft &nbsp;·&nbsp; <span class="move">R</span> — <strong>R</strong>ight</li>
+    <li><span class="move">F</span> — <strong>F</strong>ront (facing you) &nbsp;·&nbsp; <span class="move">B</span> — <strong>B</strong>ack</li>
+  </ul>
+
+  <p>A bare letter means: turn <em>that face only</em>, a quarter turn (90°),
+  <strong>clockwise as you look directly at that face.</strong> This "look at the face"
+  rule is the one people trip on — see the note below.</p>
+
+  <div class="why">
+    <span class="label">Why "as you look at it" matters</span>
+    <span class="move">R</span> and <span class="move">L</span> are both "clockwise," but
+    since you view them from opposite sides, they spin in opposite real-world
+    directions. The notation is consistent; your viewpoint is what flips. Always
+    mentally step around to face the layer you're turning. The worst offender is
+    <span class="move">B</span>: viewed from behind the cube, its clockwise looks
+    counter-clockwise from where you sit — and unlike <span class="move">L</span>, you
+    can't easily peek at it while turning. Double-check every <span class="move">B</span>.
+  </div>
+
+  <div class="try">
+    <span class="label">Do this now — cube in hand</span>
+    Hold the cube with one face toward you (that's <span class="move">F</span>). Do
+    <span class="move">R</span>, then <span class="move">U</span>, then
+    <span class="move">F</span>, watching only which layer moves each time. Don't
+    rotate the whole cube between turns — keep it planted. Say each letter aloud as
+    you do it. Then check yourself: undo it with <span class="move">F' U' R'</span> —
+    if the cube returns exactly to where it started, you read all six turns right.
+    (That undo-in-reverse is the very rule you're about to learn.)
+  </div>
+
+  <h2>Two modifiers: prime and 2</h2>
+  <table class="notation">
+    <tr><td><span class="move">R</span></td>
+        <td>quarter turn clockwise</td></tr>
+    <tr><td><span class="move">R'</span> <span class="sidenote">("R prime")</span></td>
+        <td>quarter turn <strong>counter</strong>-clockwise</td></tr>
+    <tr><td><span class="move">R2</span></td>
+        <td>half turn (180°) — direction doesn't matter</td></tr>
+  </table>
+
+  <h2>The formal idea hiding here: a move is a function, prime is its inverse</h2>
+  <p>This is worth seeing properly, because it's the engine behind <em>every</em> solve.
+  Think of a turn as a <strong>function</strong> — it takes the cube in one state and
+  returns it in another. <span class="move">R</span> is a function; so is the whole
+  sequence <span class="move">R U F</span>.</p>
+
+  <p>Every such function has an <strong>inverse</strong>: the move that exactly undoes it.
+  The inverse of <span class="move">R</span> is <span class="move">R'</span> — do one
+  then the other and you're back where you started. In symbols, mathematicians write
+  the inverse of <span class="move">R</span> as <span class="move">R⁻¹</span>, which is
+  precisely what the prime means.</p>
+
+  <div class="why">
+    <span class="label">Why this is the whole game</span>
+    To invert a <em>sequence</em>, reverse the order <strong>and</strong> prime each move.
+    The inverse of <span class="move">R U</span> is <span class="move">U' R'</span> — like
+    taking off your shoes then socks: undo in reverse, each step reversed. Later,
+    algorithms work by setting up a position, doing something, then running that setup
+    <em>in inverse</em> to clean up. You can't do that without this idea.
+    <span class="sidenote">This "reverse and invert each step" is exactly how inverses
+    of compositions work in group theory.</span>
+  </div>
+
+  <div class="try">
+    <span class="label">Do this now — prove the inverse to yourself</span>
+    Start from a <em>solved</em> cube (so the return is unmistakable) and do
+    <span class="move">R U R' U'</span> six times, counting reps aloud. Repeating it six
+    times adds up to no change at all — mathematicians say the sequence has
+    <strong>order 6</strong> — so the cube comes back exactly. Watch the pieces cycle out
+    and come home: proof that nothing is random; turns compose and reverse predictably.
+  </div>
+
+  <h2>Check yourself</h2>
+
+  <div class="quiz" data-answer="2">
+    <div class="q">What exactly does the prime symbol on a move mean?</div>
+    <button class="opt">Turn that face two whole times</button>
+    <button class="opt">Turn the whole cube around once</button>
+    <button class="opt">Turn that face counter-clockwise once</button>
+    <div class="feedback"
+         data-correct="Prime = the inverse: one quarter turn the other way. R' undoes R."
+         data-wrong="Prime means the inverse — a single quarter turn counter-clockwise. The '2' is for half turns."></div>
+  </div>
+
+  <div class="quiz" data-answer="1">
+    <div class="q">The inverse of the sequence F R is which of these?</div>
+    <button class="opt">It is simply F prime</button>
+    <button class="opt">It is R prime F prime</button>
+    <button class="opt">It is F prime R prime</button>
+    <div class="feedback"
+         data-correct="Reverse the order AND prime each move: R' F'. Shoes-then-socks."
+         data-wrong="To undo a sequence, reverse the order and prime each step. F R becomes R' F'."></div>
+  </div>
+
+  <div class="quiz" data-answer="0">
+    <div class="q">Why do R and L turn opposite real-world ways despite both being 'clockwise'?</div>
+    <button class="opt">You view the two faces from opposite sides</button>
+    <button class="opt">L is secretly defined as inverted</button>
+    <button class="opt">Left-hand faces always spin backward</button>
+    <div class="feedback"
+         data-correct="Right — 'clockwise' is judged looking straight at each face, and those viewpoints are opposite."
+         data-wrong="It's about viewpoint: clockwise is judged facing each layer, and R and L are seen from opposite sides."></div>
+  </div>
+
+  <div class="recall">
+    <span class="label">Lock it in — from memory</span>
+    Name all six face letters. What's the difference between <span class="move">R'</span>
+    and <span class="move">R2</span>? Write down the inverse of
+    <span class="move">U F R</span> without looking. (Answer: reverse + prime each.)
+  </div>
+
+  <h2>Read this next</h2>
+  <p><strong>Primary source:</strong>
+  <a href="https://ruwix.com/the-rubiks-cube/notation/">Ruwix — Rubik's Cube Notation</a>.
+  Skim it to see the same six letters and modifiers laid out canonically; it's the
+  reference cubers point newcomers to. (It also shows slice/whole-cube moves we'll
+  meet later — ignore those for now.)</p>
+
+  <div class="ask-teacher">
+    <strong>Stuck or curious?</strong> To drill inverses until they're automatic: write five
+    random three-move sequences, invert each on paper (reverse + prime), then do
+    sequence-plus-inverse on the cube — a solved cube must come back exactly, so every drill
+    self-checks. If it doesn't return, the usual culprit is <span class="move">B</span> (see
+    the viewpoint note above). When you can read <span class="move">R U R' U'</span> without
+    translating, continue to <a href="0003-the-white-cross.html">Lesson 3: the first layer's
+    cross, by reasoning not recipe</a>.
+  </div>
+
+  <div class="lesson-nav">
+    <span><a href="../index.html">⌂ Course home</a></span>
+    <span><a href="0001-pieces-not-stickers.html">← Lesson 1</a></span>
+    <span><a href="../reference/glossary.html">Glossary</a> · <a href="0003-the-white-cross.html">Lesson 3 →</a></span>
+  </div>
+</body>
+</html>

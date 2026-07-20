@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 4 — First-Layer Corners (Your First Algorithm)</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/quiz.js"></script>
+</head>
+<body>
+  <p class="eyebrow">Lesson 4 · First Layer</p>
+  <h1>First-Layer Corners</h1>
+  <p class="subtitle">Your first real algorithm — and we dissect exactly why it works, so it's understanding, not incantation.</p>
+
+  <p>You have a verified white cross on the bottom (<a href="0003-the-white-cross.html">Lesson 3</a>).
+  Keep <strong>white down, yellow up.</strong> Now we fill the four bottom <strong>corners</strong>
+  to finish the entire first layer. This is the first time you'll memorize a move
+  sequence — but you won't memorize it blind. You'll watch it do its job.</p>
+
+  <h2>The goal</h2>
+  <p>Each corner has <strong>three</strong> colors. One of the four white corners has, say,
+  white-blue-red — its one true home is where the white, blue, and red faces meet. When
+  all four white corners sit correctly, the whole bottom face is solid white <em>and</em>
+  the bottom band of every side face matches its center. First layer complete.</p>
+
+  <h2>The setup: get the corner above its slot</h2>
+  <p>Work one corner at a time. The target slot is the <strong>bottom-front-right</strong>
+  (where the front and right faces meet, on the bottom). Always insert there, rotating
+  the whole cube to bring each new slot to the front-right.</p>
+  <ol>
+    <li>Find a white corner that belongs in the front-right-bottom slot (its colors
+      match the front center, the right center, and white).</li>
+    <li>If it's loose in the top layer, turn <span class="move">U</span> until it sits at
+      the <strong>top-front-right</strong> position — directly <em>above</em> its slot.
+      <span class="sidenote">"Above its slot" = its two non-white colors are the front and
+      right center colors — in <em>either</em> arrangement. When white faces straight up, the
+      two side colors look swapped relative to their centers; that still counts as above its
+      slot.</span></li>
+    <li>If it's stuck in a <em>bottom</em> slot but wrong, do <span class="move">R U R'</span>
+      once to pop it up into the top layer, then position it as above.</li>
+  </ol>
+
+  <h2>The algorithm: the trigger, repeated</h2>
+  <p>With the corner at top-front-right, repeat this single sequence until the corner
+  drops into place with <strong>white facing down</strong>:</p>
+  <p class="alg-display">R U R' U' <span class="sidenote">— at most 5 times</span></p>
+  <p>That's it. One trigger. The corner enters the slot on the odd repetitions and pops
+  back up on the even ones, so check it whenever it's <em>down</em>: it seats correctly —
+  white facing the floor, side colors matching — after exactly <strong>1, 3, or 5</strong>
+  repetitions, depending on which way white was facing at the start. If it's rep 4 and
+  things look wrong, you're not failing; the 5th finishes it.</p>
+
+  <div class="why">
+    <span class="label">Why this works — watch it, don't just trust it</span>
+    The repetitions alternate: an odd rep <strong>drops the corner into the slot</strong>
+    (possibly twisted), the following even rep <strong>lifts it back out</strong> — and each
+    round trip re-enters the slot one <strong>twist</strong> further along. The corner can sit
+    in the slot three ways, but only one has white facing down, so the cycle must hit it
+    within three visits (reps 1, 3, 5). You're not hoping; you're walking a piece through a
+    known, finite set of states.
+    <span class="sidenote">Formally: the trigger has finite <em>order</em> — repeat it
+    enough and the cube returns to start (6 times here). You're using a slice of that
+    cycle to land the orientation you want.</span>
+  </div>
+
+  <div class="why">
+    <span class="label">Why the cross survives</span>
+    Notice <span class="move">R U R' U'</span> only ever disturbs the right column and
+    the top — and the <span class="move">R'</span> puts back whatever <span class="move">R</span>
+    moved. So the white cross you worked for stays intact through every repetition. Good
+    algorithms are <em>surgical</em>: they change a few pieces and leave the rest alone.
+  </div>
+
+  <div class="try">
+    <span class="label">Do this now — narrate it</span>
+    Place one white corner above its slot. Do <span class="move">R U R' U'</span> once and
+    <em>watch the corner</em>: see it dip into the slot and pop back twisted. Keep going,
+    out loud — "still up… twisted… down, white facing the wrong way… there." Feel the
+    cycle. Then solve all four corners this way.
+  </div>
+
+  <h2>How to verify</h2>
+  <p>Turn the cube so white is up and look: the entire white face is solid white, and
+  each side face shows a matching solid band across the first layer. If a corner shows
+  white on a side instead of down, it's seated in the wrong orientation — pop it out
+  with <span class="move">R U R'</span> and redo the trigger.</p>
+
+  <h2>Check yourself</h2>
+
+  <div class="quiz" data-answer="2">
+    <div class="q">Before inserting, where must the white corner sit?</div>
+    <button class="opt">In any empty bottom slot</button>
+    <button class="opt">Next to the yellow center</button>
+    <button class="opt">In the top, above its target slot</button>
+    <div class="feedback"
+         data-correct="Right — stage it at top-front-right, directly above the slot it belongs in."
+         data-wrong="You set it up in the top layer directly above its destination slot, then run the trigger."></div>
+  </div>
+
+  <div class="quiz" data-answer="0">
+    <div class="q">Why does repeating R U R' U' eventually seat the corner correctly?</div>
+    <button class="opt">It cycles the corner through its orientations</button>
+    <button class="opt">It shuffles the pieces randomly until one fits</button>
+    <button class="opt">It repaints the corner's three sticker colors</button>
+    <div class="feedback"
+         data-correct="Exactly — each rep twists the corner to the next orientation; one of them is white-down."
+         data-wrong="Nothing's random and colors are welded. Each repetition twists the corner one step through its finite orientations until white faces down."></div>
+  </div>
+
+  <div class="quiz" data-answer="1">
+    <div class="q">Why is the white cross undisturbed by R U R' U'?</div>
+    <button class="opt">The cross pieces are physically locked in place</button>
+    <button class="opt">R' undoes what R moved; only a few pieces cycle</button>
+    <button class="opt">Turns of U can never reach down to the bottom</button>
+    <div class="feedback"
+         data-correct="Right — the trigger is surgical: R and R' cancel their effect on the cross, so it returns intact."
+         data-wrong="The algorithm is surgical — R' restores what R displaced, so the bottom cross comes back untouched each cycle."></div>
+  </div>
+
+  <div class="recall">
+    <span class="label">Lock it in — from memory</span>
+    What's the one trigger? Where do you position the corner first? In one sentence,
+    <em>why</em> does repeating the trigger work? How do you fix a corner that's home
+    but white-side-out?
+  </div>
+
+  <h2>Read this next</h2>
+  <p><strong>Primary source:</strong> the white-corners step of
+  <a href="https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/">
+  Ruwix — Beginner's Method</a> (it offers a faster three-case version for the same step
+  — worth learning once the repeated trigger feels boring rather than busy).</p>
+
+  <div class="ask-teacher">
+    <strong>Stuck or curious?</strong> If the trigger seems to loop forever, stop and
+    re-check the staging: the corner must be at top-front-<em>right</em>, and its two
+    non-white colors must be the front and right center colors (in either arrangement —
+    re-read the sidenote if white faces up). After 5 reps it <em>must</em> be seated; if it
+    isn't, it was staged over the wrong slot — turn <span class="move">U</span> and re-aim.
+    Faster three-case versions of this step exist (see the Ruwix link above) — learn them
+    after the trigger feels boring, not before. Once your whole first layer is solid and
+    verified, continue to <a href="0005-the-middle-layer.html">Lesson 5: the middle
+    layer</a>.
+  </div>
+
+  <div class="lesson-nav">
+    <span><a href="../index.html">⌂ Course home</a></span>
+    <span><a href="0003-the-white-cross.html">← Lesson 3</a></span>
+    <span><a href="../reference/glossary.html">Glossary</a> · <a href="0005-the-middle-layer.html">Lesson 5 →</a></span>
+  </div>
+</body>
+</html>

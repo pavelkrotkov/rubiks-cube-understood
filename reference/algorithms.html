@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rubik's Cube — Algorithm Cheat-Sheet</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .alg-card {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    background: #fff;
+  }
+  .alg-card h3 { margin: 0 0 0.3rem; }
+  .alg-seq {
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    font-size: 1.15rem;
+    letter-spacing: 0.03em;
+    margin: 0.5rem 0;
+    color: var(--accent);
+  }
+  .alg-when { font-size: 0.9rem; color: var(--ink-soft); margin: 0.2rem 0 0; }
+  .stage-tag {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+  <p class="eyebrow">Rubik's Cube · Reference</p>
+  <h1>Algorithm Cheat-Sheet</h1>
+  <p class="subtitle">The growing list of memorized sequences, by stage. Orientation throughout: white on the bottom, yellow on top, until the last layer.</p>
+  <p class="sidenote">Notation reminder in the <a href="glossary.html">glossary</a>. A bare letter = quarter turn clockwise (facing that face); <span class="move">'</span> = counter-clockwise; <span class="move">2</span> = half turn.</p>
+
+  <h2>First layer — corners</h2>
+  <div class="alg-card">
+    <span class="stage-tag">Insert a corner (repeat until seated)</span>
+    <h3>The trigger</h3>
+    <p class="alg-seq">R U R' U'</p>
+    <p class="alg-when">Corner staged in the top layer, above its front-right-bottom slot.
+    Repeat until white faces down. Each rep twists the corner one orientation.
+    Also pops a wrongly-seated corner out (do it once). — <a href="../lessons/0004-first-layer-corners.html">Lesson 4</a></p>
+  </div>
+
+  <h2>Middle layer — edges</h2>
+  <p>Find a top-layer edge with <strong>no yellow</strong>. Align its front color to the
+  matching center (an upside-down T), then send it left or right by its top color.</p>
+
+  <div class="alg-card">
+    <span class="stage-tag">Edge goes to the RIGHT slot</span>
+    <h3>Right insertion</h3>
+    <p class="alg-seq">U R U' R' U' F' U F</p>
+    <p class="alg-when">Top edge's up-color matches the right center. — <a href="../lessons/0005-the-middle-layer.html">Lesson 5</a></p>
+  </div>
+
+  <div class="alg-card">
+    <span class="stage-tag">Edge goes to the LEFT slot</span>
+    <h3>Left insertion (mirror of the above)</h3>
+    <p class="alg-seq">U' L' U L U F U' F'</p>
+    <p class="alg-when">Top edge's up-color matches the left center. To free a stuck middle
+    edge, insert any top edge into its slot, then re-place. — <a href="../lessons/0005-the-middle-layer.html">Lesson 5</a></p>
+  </div>
+
+  <h2>Last layer — yellow cross (orient edges)</h2>
+  <div class="alg-card">
+    <span class="stage-tag">Flip yellow edges up · position ignored</span>
+    <h3>The cross algorithm</h3>
+    <p class="alg-seq">F R U R' U' F'</p>
+    <p class="alg-when">Hold yellow on top. Loop: look at the edge pattern → grip → apply
+    <strong>once</strong> → re-look and re-grip before the next round.
+    <strong>L-shape</strong> → bend at back-left · <strong>Line</strong> → horizontal ·
+    <strong>Dot</strong> → any grip this round. Expect 3 rounds from a dot, 2 from an L, 1 from
+    a line. Note it's the corner trigger <span class="move">R U R' U'</span> conjugated by
+    <span class="move">F … F'</span>. — <a href="../lessons/0006-the-yellow-cross.html">Lesson 6</a></p>
+  </div>
+
+  <h2>Last layer — position the cross edges (permute edges)</h2>
+  <div class="alg-card">
+    <span class="stage-tag">Swap the FRONT and LEFT yellow edges</span>
+    <h3>The edge swap</h3>
+    <p class="alg-seq">R U R' U R U2 R' U</p>
+    <p class="alg-when">Yellow cross done but side colors mismatched. Turn <span class="move">U</span>
+    until two edges match their centers. Two <strong>adjacent</strong> match → hold them at
+    back &amp; right, apply once (swaps front/left). Two <strong>opposite</strong> match →
+    apply once from anywhere, realign, then handle as adjacent.
+    — <a href="../lessons/0007-positioning-the-edges.html">Lesson 7</a></p>
+  </div>
+
+  <h2>Last layer — position the corners (permute corners)</h2>
+  <div class="alg-card">
+    <span class="stage-tag">Cycle three corners · front-right-top stays put</span>
+    <h3>The corner 3-cycle</h3>
+    <p class="alg-seq">U R U' L' U R' U' L</p>
+    <p class="alg-when">Find the one corner already in its correct <em>home</em> (right spot,
+    any twist) and hold it at <strong>front-right-top</strong>; apply until the other three
+    cycle into place (1–2×). No corner correct → apply once from anywhere first. It's a
+    commutator: A&nbsp;B&nbsp;A'&nbsp;B' with A&nbsp;=&nbsp;<span class="move">U R U'</span>,
+    B&nbsp;=&nbsp;<span class="move">L'</span>. — <a href="../lessons/0008-positioning-the-corners.html">Lesson 8</a></p>
+  </div>
+
+  <h2>Last layer — orient the corners (final step)</h2>
+  <div class="alg-card">
+    <span class="stage-tag">Twist corners yellow-up · finishes the cube</span>
+    <h3>The corner twister</h3>
+    <p class="alg-seq">R' D' R D &nbsp;<span style="color:var(--ink-soft);font-size:0.85em;">(repeat in pairs)</span></p>
+    <p class="alg-when">Hold a twisted corner at <strong>front-right-top</strong>; repeat until
+    its yellow faces up (2 or 4 reps). Then turn <strong>only <span class="move">U</span></strong>
+    to bring the next twisted corner into that same spot and repeat. The bottom layers look
+    wrecked mid-process — they self-restore when the last corner is done. Finish by aligning
+    <span class="move">U</span>. Also a commutator: [<span class="move">R'</span>,&nbsp;<span class="move">D'</span>].
+    — <a href="../lessons/0009-orienting-the-corners.html">Lesson 9</a></p>
+  </div>
+
+  <div class="ask-teacher">
+    <strong>That's the complete beginner method</strong> — cross, corners, middle edges, yellow
+    cross, edge permute, corner permute, corner orient. None of these sequences is arbitrary:
+    each entry links to the lesson that takes it apart. If one still feels like magic after its
+    lesson, that's a genuinely good "why does this work?" question for
+    <a href="https://www.speedsolving.com/">Speedsolving.com</a> or
+    <a href="https://www.reddit.com/r/Cubers/">r/Cubers</a>.
+  </div>
+
+  <div class="lesson-nav">
+    <span><a href="../index.html">⌂ Course home</a></span>
+    <span><a href="glossary.html">← Glossary &amp; Notation</a></span>
+    <span><a href="../lessons/0005-the-middle-layer.html">Lesson 5 →</a></span>
+  </div>
+</body>
+</html>

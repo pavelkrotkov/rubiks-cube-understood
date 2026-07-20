@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A nine-lesson course that teaches you to solve the 3×3 Rubik's cube with real understanding — every algorithm explained, every claim verified.">
+<title>The Rubik's Cube, Understood — a nine-lesson course</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .arc { list-style: none; padding: 0; margin: 0; }
+  .arc li { margin: 0.55rem 0; padding-left: 0; }
+  .arc .stage {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-soft); display: block; margin: 1.6rem 0 0.4rem;
+  }
+  .arc .num {
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    color: var(--ink-soft); font-size: 0.85rem; margin-right: 0.45rem;
+  }
+  .arc .blurb { color: var(--ink-soft); }
+</style>
+</head>
+<body>
+  <p class="eyebrow">A course in solving the 3×3</p>
+  <h1>The Rubik's Cube, Understood</h1>
+  <p class="subtitle">Solve any scramble — and know <em>why</em> every move works.</p>
+
+  <p>Most guides hand you sequences to memorize. This course takes the other road: it
+  builds the cube's logic first — pieces, position, orientation — and then introduces each
+  algorithm as something with a visible <em>reason</em>: a repetition cycle, a mirror image,
+  a setup-and-undo (<em>conjugation</em>), a do-undo interleaving (<em>commutator</em>), a
+  conservation law. By the end you can solve the cube from memory <strong>and</strong>
+  explain, stage by stage, why the method works — including why some cube states are
+  flat-out impossible.</p>
+
+  <div class="note">
+    <span class="label">How to use this course</span>
+    Work with a real 3×3 in hand — every lesson has "do this now" steps that only pay off
+    physically. Take the lessons in order; each is short and ends with self-checking quizzes
+    and a verification step. Don't move on until the verification passes on your own cube.
+    Two reference pages — the <a href="reference/glossary.html">glossary</a> and the
+    <a href="reference/algorithms.html">algorithm cheat-sheet</a> — are the pages you'll
+    come back to after the lessons fade.
+  </div>
+
+  <h2>The course</h2>
+  <ul class="arc">
+    <li><span class="stage">Foundations</span></li>
+    <li><span class="num">01</span><a href="lessons/0001-pieces-not-stickers.html">The Cube Is Pieces, Not Stickers</a>
+      — <span class="blurb">the reframe everything rests on: 20 pieces, fixed centers, and the position/orientation split.</span></li>
+    <li><span class="num">02</span><a href="lessons/0002-the-six-turns.html">Reading &amp; Writing the Six Turns</a>
+      — <span class="blurb">notation as a language; moves as functions and primes as inverses.</span></li>
+
+    <li><span class="stage">First layer</span></li>
+    <li><span class="num">03</span><a href="lessons/0003-the-white-cross.html">The White Cross, by Reasoning</a>
+      — <span class="blurb">your first solving step, done by pure thought — no algorithm at all.</span></li>
+    <li><span class="num">04</span><a href="lessons/0004-first-layer-corners.html">First-Layer Corners</a>
+      — <span class="blurb">your first algorithm, the trigger — and why repeating it must work.</span></li>
+
+    <li><span class="stage">Middle layer</span></li>
+    <li><span class="num">05</span><a href="lessons/0005-the-middle-layer.html">The Middle Layer</a>
+      — <span class="blurb">a mirror-image pair of insertions; one idea, reflected.</span></li>
+
+    <li><span class="stage">Last layer</span></li>
+    <li><span class="num">06</span><a href="lessons/0006-the-yellow-cross.html">The Yellow Cross</a>
+      — <span class="blurb">orientation isolated — and your first conjugation: a tool you own, re-aimed.</span></li>
+    <li><span class="num">07</span><a href="lessons/0007-positioning-the-edges.html">Positioning the Cross Edges</a>
+      — <span class="blurb">the permutation half; why the match-counts always add to four.</span></li>
+    <li><span class="num">08</span><a href="lessons/0008-positioning-the-corners.html">Positioning the Corners</a>
+      — <span class="blurb">a three-piece cycle that is secretly a commutator — the deepest trick in cubing.</span></li>
+    <li><span class="num">09</span><a href="lessons/0009-orienting-the-corners.html">Orienting the Corners</a>
+      — <span class="blurb">the finish: a four-move loan with guaranteed repayment, and your first impossibility proof.</span></li>
+  </ul>
+
+  <h2>Reference</h2>
+  <p><a href="reference/glossary.html">Glossary &amp; Notation</a> — the course's shared
+  vocabulary, defined once and used exactly.<br>
+  <a href="reference/algorithms.html">Algorithm Cheat-Sheet</a> — every sequence in the
+  method, annotated with when to use it and why it works. Prints well.</p>
+
+  <h2>Sources this course stands on</h2>
+  <p>The mathematical spine — permutation vs. orientation, conjugates, commutators, the
+  conservation laws — follows
+  <a href="https://people.math.harvard.edu/~jjchen/docs/Group%20Theory%20and%20the%20Rubik's%20Cube.pdf">Janet
+  Chen, <em>Group Theory and the Rubik's Cube</em></a> and
+  <a href="https://www.geometer.org/rubik/group.pdf">Tom Davis, <em>Group Theory via Rubik's
+  Cube</em></a>. The move sequences are the standard beginner layer-by-layer method as
+  documented by <a href="https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/">Ruwix</a>,
+  a lineage going back to Singmaster's 1979 notes.</p>
+
+  <h2>When you outgrow this course</h2>
+  <p>Post your first solve — or your best "why does this work?" question — at
+  <a href="https://www.reddit.com/r/Cubers/">r/Cubers</a> or the
+  <a href="https://www.speedsolving.com/">Speedsolving forums</a>. From there the usual
+  roads are speed (the CFOP method), bigger cubes, or the real group theory in Chen's
+  notes — for which this course has quietly prepared you.</p>
+
+  <div class="lesson-nav">
+    <span>Start here: <a href="lessons/0001-pieces-not-stickers.html">Lesson 1 →</a></span>
+    <span><a href="reference/algorithms.html">Cheat-Sheet</a> · <a href="reference/glossary.html">Glossary</a></span>
+  </div>
+</body>
+</html>

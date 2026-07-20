@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 9 — Orienting the Corners (Finishing the Cube)</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/quiz.js"></script>
+</head>
+<body>
+  <p class="eyebrow">Lesson 9 · Last Layer · Final Step</p>
+  <h1>Orienting the Corners</h1>
+  <p class="subtitle">The last step — with a moment where the cube looks destroyed and you keep going anyway, because the structure says so.</p>
+
+  <p>Every piece is home (<a href="0008-positioning-the-corners.html">Lesson 8</a>). All that
+  remains is the last unchecked box from <a href="0001-pieces-not-stickers.html">Lesson 1</a>:
+  some corners are correctly <em>positioned</em> but wrongly <em>twisted</em>. Fix their
+  orientation and the cube is solved. This step's algorithm is tiny — the skill is holding your
+  nerve.</p>
+
+  <h2>The algorithm</h2>
+  <p class="alg-display">R' D' R D</p>
+  <p>Yes — it's the Lesson 4 trigger's cousin, aimed downward. And you already know what shape it
+  is: <strong>A B A′ B′</strong> with A = <span class="move">R'</span>, B = <span class="move">D'</span>
+  — a small <strong>commutator</strong>, so it changes little and undoes itself predictably.</p>
+
+  <h2>The procedure — read all of it before starting</h2>
+  <ol>
+    <li>Hold the cube yellow-up, with a <strong>twisted corner at front-right-top</strong>.</li>
+    <li>Repeat <span class="move">R' D' R D</span> until that corner's <strong>yellow faces up</strong>.
+      It always takes <strong>2 or 4</strong> repetitions (the twist steps 120° per pair) —
+      so <strong>check only after every second repetition</strong>. Mid-pair, a bottom-layer
+      corner visits the slot and may even show <em>white</em> facing up; ignore whatever
+      colors pass through between pairs.</li>
+    <li><strong>Without rotating the cube in your hands</strong>, turn only the top
+      (<span class="move">U</span>) to bring the next twisted corner into the front-right-top
+      spot. <strong>Never turn <span class="move">D</span> between corners</strong> — the
+      bottom must stay exactly as the loan left it. Repeat step 2.</li>
+    <li>When every corner is yellow-up, a final turn of <span class="move">U</span> (one,
+      two, or three quarter-turns) aligns the top layer. <strong>The cube is solved.</strong></li>
+  </ol>
+
+  <div class="why">
+    <span class="label">The nerve-holding part — why the "damage" is a loan</span>
+    Midway through, the bottom two layers will look <strong>wrecked</strong>. Every beginner
+    panics here and "fixes" it — destroying their solve. Don't. Each round of
+    <span class="move">R' D' R D</span> borrows from the bottom layers and doesn't fully repay
+    until the corner twists land back at a clean multiple. Because the total twist of all corners
+    must cancel out (see the law below), the number of repetitions across the <em>whole</em> step
+    always comes out to a full cycle — and the bottom layers snap back exactly as the last corner
+    finishes. The mess was never damage; it was <strong>debt with guaranteed repayment</strong>.
+    Trust the structure — you've seen why commutators and repetition cycles restore what they
+    disturb. <span class="sidenote">Prove the load-bearing fact yourself: on a solved cube,
+    apply <span class="move">R' D' R D</span> six times — it returns exactly. That order-6
+    cycle is what the repayment rides on.</span>
+  </div>
+
+  <div class="why">
+    <span class="label">The twist law — your first impossibility proof</span>
+    Here's the payoff fact: the <strong>total twist of the eight corners is conserved</strong> —
+    every face turn changes it by a multiple of 3 (i.e., not at all, mod 3). Consequence: a cube
+    with <em>one single corner twisted</em> and everything else solved is <strong>unsolvable by
+    turning faces</strong>. If you ever meet one, someone twisted a corner with their thumb —
+    pop it back physically. This is why your repetition counts in step 2 always conspire to a
+    clean total: the cube literally cannot leave you with leftover twist.
+    <span class="sidenote">This conservation law is worked out properly in Janet Chen's notes —
+    the same reasoning shows a lone flipped edge is impossible too.</span>
+  </div>
+
+  <div class="try">
+    <span class="label">Do this now — finish your first cube</span>
+    Solve through Lesson 8, then run this step. Say it aloud at the scary moment: "the bottom is
+    fine, it's a loan." When the last corner clicks yellow and the layers snap back, give the
+    final <span class="move">U</span>. Look at what's in your hands. <strong>You solved it — and
+    you know why every step worked.</strong>
+  </div>
+
+  <h2>Check yourself</h2>
+
+  <div class="quiz" data-answer="1">
+    <div class="q">Mid-step, the bottom two layers look scrambled. What should you do?</div>
+    <button class="opt">Stop and repair them right away</button>
+    <button class="opt">Continue; they restore by the end</button>
+    <button class="opt">Restart the whole solve over again</button>
+    <div class="feedback"
+         data-correct="Right — the disturbance is a loan the structure guarantees to repay when the last corner lands."
+         data-wrong="Keep going! The twist law guarantees the repetitions total a full cycle, snapping the bottom layers back."></div>
+  </div>
+
+  <div class="quiz" data-answer="2">
+    <div class="q">How do you bring the next twisted corner into the working spot?</div>
+    <button class="opt">Rotate the whole cube leftwards</button>
+    <button class="opt">Turn the D face until it fits</button>
+    <button class="opt">Turn only U, keeping your grip</button>
+    <div class="feedback"
+         data-correct="Right — only U moves; regripping makes R and D point at different physical faces, so the undo no longer matches the do."
+         data-wrong="Keep the cube planted and turn only the top — regripping (or turning D) makes R and D refer to different faces, breaking the loan's repayment."></div>
+  </div>
+
+  <div class="quiz" data-answer="0">
+    <div class="q">Why is a cube with one lone twisted corner unsolvable by face turns?</div>
+    <button class="opt">Total corner twist is conserved mod three</button>
+    <button class="opt">That corner's stickers must be swapped</button>
+    <button class="opt">The algorithms only work in pairs there</button>
+    <div class="feedback"
+         data-correct="Exactly — face turns can't change total twist mod 3, so a lone 120° twist can never be undone."
+         data-wrong="It's the conservation law: every face turn preserves total corner twist mod 3, and a lone twist violates it."></div>
+  </div>
+
+  <div class="recall">
+    <span class="label">Lock it in — from memory</span>
+    What's the four-move algorithm and what commutator is it? How do you advance to the next
+    corner? Why does the bottom always restore? State the twist law in one sentence.
+  </div>
+
+  <h2>Read this next</h2>
+  <p><strong>Primary source:</strong> the final step of
+  <a href="https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/">
+  Ruwix — Beginner's Method</a>. Then, for the impossibility law you just used, read the
+  corner-orientation invariant in
+  <a href="https://people.math.harvard.edu/~jjchen/docs/Group%20Theory%20and%20the%20Rubik's%20Cube.pdf">
+  Janet Chen's notes</a> — you now have every concept needed to follow it.</p>
+
+  <div class="ask-teacher">
+    <strong>This is the summit of the beginner method.</strong> Your first full unaided solve
+    is a real milestone — mark it. Then make it stick: solve again tomorrow, then in three
+    days, then in a week (spacing beats cramming), and try the <em>explain-every-step</em>
+    challenge — solve while saying out loud what each stage does to which pieces and why.
+    That's the difference between owning the method and renting it. If the final step goes
+    wrong mid-way, the cause is almost always a regrip or a stray <span class="move">D</span>
+    turn between corners. Celebrate your first solve with the folks at
+    <a href="https://www.reddit.com/r/Cubers/">r/Cubers</a> — they love first-solve posts.
+  </div>
+
+  <div class="lesson-nav">
+    <span><a href="../index.html">⌂ Course home</a></span>
+    <span><a href="0008-positioning-the-corners.html">← Lesson 8</a></span>
+    <span><a href="../reference/algorithms.html">Algorithm Cheat-Sheet →</a></span>
+  </div>
+</body>
+</html>
